@@ -1,0 +1,14 @@
+<plugin 
+	heading="Disk Partitions"
+	last-updated="lastGet"
+	on-refresh="getData()">
+
+	<table>
+		<tbody ng-repeat="staticItem in staticData">
+			<tr ng-repeat="(key, val) in staticItem.info">
+				<td>{{ key }}</td>
+				<td>{{ val }}</td>
+			</tr>
+		</tbody>
+	</table>
+</plugin>

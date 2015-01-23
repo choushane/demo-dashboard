@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>linux-dash : Server Monitoring Web Dashboard</title>
+        <style type="text/css">
+            body{margin: 0px;}
+            .Aside-left{float:left;}
+            .Aside-right{float:right;}
+            .all{background-color:#f0e68c;width:1840px;height:980px;z-index:1;
+                 margin:0px;}
+            .left_all{background-color:#db7093;width:12%;height:100%;z-index:2;
+                      }
+            .left_left{background-color:#000000;width:15%;height:100%;z-index:3;
+                       }
+            .left_right{background-color:#696969;width:85%;height:100%;
+                        z-index:3;
+                        } 
+            .right_all{background-color:#d2b48c;width:88%;height:100%;
+                       z-index:2;}
+            .right_top{background-color:#ff0000;width:100%;height:8%;z-index:3;
+                       }
+            .right_bottom{background-color:#ff00ff;width:100%;height:92%;z-index:4;
+                       }
+            .logo{background-color:#adff2f;margin-top:1%;margin-right:1%;
+                  z-index:4;width:120px;height:40px;}
+            .setting_bar{background-color:#adff2f;
+                         margin-top:1%;margin-left:2%;
+                         z-index:4;width:25%;height:40px;}
+            .button{float:left;background-color:#00ced1;margin:5px;width:24px;height:24px;
+                    }
+            .set{}
+            .add{}
+            .table_a{}
+            .table_b{}
+            .search{margin:5px;} 
+            .single{margin-top:80px;}
+            .multiple{margin-top:60px;}
+            .setting-1{margin:10%;}
+            .item_0{margin:0px;}
+            .plus{margin-right:5%;} 
+
+            .single_part{margin:0px;background-color:#afeeee;margin-top:10px;width:100%;
+                         height:80%;}
+            .multiple_part{margin:0px;background-color:#e0ffff;margin-top:140px;width:100%;
+                           height:70%;}
+             
+        </style>
+    </head>
+    <body>
+        <div class="all" >
+            <div class="Aside-left left_all">
+                <div class="Aside-left left_left">
+                    <div class="button single"></div>
+                    <div class="button multiple"></div>
+                </div>
+                <div class="Aside-left left_right">
+                    <div>
+                        <div class="logo setting-1"></div>
+                    </div>
+                    <div>
+                        <div class="single_part">
+                            <div>
+                                <div class="button item_0 arrow"></div>
+                                <p class="setting-1">12313</p>
+                            </div>
+                            <div>
+                                <div class="button item_0"></div>
+                                <p class="Aside-left ">12313</p>
+                                <div class="button item_0 arrow plus"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="Aside-left right_all">
+                <div class="right_top">
+                    <div class="Aside-right logo">LOGO</div>
+                    <div class="Aside-left setting_bar">
+                        <div class="Aside-left">
+                            <div class="button set">1</div>
+                            <div class="button add">2</div>
+                        </div>
+                        <div class="Aside-left">
+                            <input type="text" class="search"/>
+                        </div>
+                        <div class="Aside-left">
+                            <div class="button table_a">3</div>
+                            <div class="button table_b">4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_bottom">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
