@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>linux-dash : Server Monitoring Web Dashboard</title>
-        <link rel="stylesheet" href="./css/jquery-ui.min.css">
-        <script src="./js/jquery-1.11.2.min.js"></script>
-        <script src="./js/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="./css/style.css">
+        <title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Monitor your Linux server through a simple web dashboard. Open source and free!">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/pages/dashboard.css" rel="stylesheet" type="text/css">
+        <link href="css/odometer.css" rel="stylesheet" type="text/css">
         <style type="text/css">
-            .sortable { list-style-type: none; margin: 0; padding: 0; 
-                         width: 100%; }
-            .sortable div {margin: 10px; padding: 1px; float: left; width: 500px;
-                           height: 200px; font-size: 4em; text-align: center; }
             body{margin: 0px;}
             .Aside-left{float:left;}
             .Aside-right{float:right;}
-            .all{background-color:#f0e68c;width:1840px;height:980px;z-index:1;
+            .all{background-color:#000000;width:1920px;height:1080px;z-index:1;
                  margin:0px;}
-            .left_all{background-color:#db7093;width:12%;height:100%;z-index:2;
+            .left_all{width:12%;height:100%;z-index:2;
                       }
             .left_left{background-color:#000000;width:15%;height:100%;z-index:3;
                        }
-            .left_right{background-color:#696969;width:85%;height:100%;
+            .left_right{background-color:#2f4f4f;width:85%;height:100%;
                         z-index:3;
                         } 
-            .right_all{background-color:#d2b48c;width:88%;height:100%;
+            .right_all{background-color:#556B2F;width:88%;height:100%;
                        z-index:2;}
-            .right_top{background-color:#ff0000;width:100%;height:8%;z-index:3;
+            .right_top{width:100%;height:8%;z-index:3;
                        }
-            .right_bottom{background-color:#ff00ff;width:100%;height:92%;z-index:4;
+            .right_bottom{width:100%;height:92%;z-index:4;
                        }
             .logo{background-color:#adff2f;margin-top:1%;margin-right:1%;
                   z-index:4;width:120px;height:40px;}
-            .setting_bar{background-color:#adff2f;
+            .setting_bar{
                          margin-top:1%;margin-left:2%;
                          z-index:4;width:25%;height:40px;}
-            .button{float:left;background-color:#00ced1;margin:5px;width:24px;height:24px;
+            .button{float:left;margin:5px;width:24px;height:24px;
                     }
-            .set{}
-            .add{}
-            .table_a{}
-            .table_b{}
+            .set{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHASURBVEhLrZXNTsJAFIWHQi2BRJtQQ0LcEhMTX8H38Bnc+SysdKkvRKIhcUli2IggFEioLd4z7ZRrnf4McpKPDjOnczq3PyNIXWJA7I7EA3FJnBC1Gv0MxuPxneu61NyrJodilbXVMQxDMZlMRL/ff6a/98QXRnbz+VwACOYiyjxRFIlOpwPbFfFuoWVZltaso8zbaDQwJXRGODIAwmDVoDJfIpsgJ4kPmqwmD65fK1BUCSnycMmbvFwuxWKxkIO9Xi8eMRTmUAHtdhtdN8SbDPB9Pw3gQNk+HVlfq9VClwzQlkhx6E3nkitYrVbpErtdvNjm2mw28og5ms0mmvsSIQBl4leRBdL1c5THcRw0y0vEMXmyuOQK1uu1wCow6HlePGKo7XabBiVv875EqB9CIGXKo4qnXq/D9rdEJmUogiv9VOBEgHTVzgOePJ82AOJXoIxlZH06yQB+gxSmIUrT6TRpxULA42g0EkEQCNu2tScXwTWbzcRwOETzlQgJbKHignhK/hyDF+KWuCZcXAI251PinMAuhIdYX9Bq+iZ84oP4xEQAuw8+IAiTD/E/FBEBgY9TwK9UhfG+Q5WUS+x+AJBSmhoSFOtYAAAAAElFTkSuQmCC');}
+            .add{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFOSURBVEhLvdVNK0RRHMfxi7dAUaYseBUsPe2YlKyUJSvZsLTkLZDsbSSTKEveA0qJjbIyFOXx+5t7znRGf3fmmHv96jPn3Omc/+0+nHM7kuz0oYwplNAD5QG3OMA+7hGVQezhA19NaIzGak5LmcEzrGJZnjCNzKzgE1aBVuhqlmFmDu0U91RjFg3pRxXWhL94hF6QenZhDQytw0d9a0xoG0knBjCvg5yzgJJOoPdcbd7pQlmFJ2qHxWRSK/kKQ7XDxqy51uccZ2k3GcFw2q1nw7VhLvSjBWI9pNhYNaq6Rc32o7aSdYs2Xetz6iijTphV14a51M8xrMv7KXYdyJFuUQVF5dCfQPtH3tHGV9EJbrCjf3LOFu7S7j9sdso43mFNiPGGMZgp9IPjU+gn06cb2lteYBULaYzGak509KCWcIJrvDrqa4Euohe/JEm+AafR85Yqyw7QAAAAAElFTkSuQmCC');}
+            .table_a{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMzSURBVEhLfZRNT1NBFIZv6RctH20AbYpgTBUMAT+gBkQgITFEF7rQuPIXuPAfuDAxcenPcGOiiXtdAolIVEJJqnSB2FpSWqAJLa201+dtewnWC2/y5N6ZOXPmzJkz4zBOkcfjuReNRl+Njo72u91uMx6PVxYXF1/v7e09YzhXt7KXs/G1k6+7u/vR3NzcndnZWX8kEnH5/X5PIpEwstnsPOO/62b2aml87dQbCoWmoL1cLjv29/cdwWDQ0dfXd8nlct1k3F03s9eJjknDSE9PzxApcCSTSXNjY8MolUpGOBzubG9vn8HkTN3SXic57mDyVFdXV6hYLJqrq6vVhYWF6vb2thkIBJyk6Do2V+qm9jrJcT8OJtra2jzk0+DQ8rFYjMCTFQ2y4Dl2cotfv9p2snPcgsaIeKBSqRipVMpIp9NrRPt+c3NzJ5/PG4z5fT6fHPfVp/wvO8dBJk17vd4eOcFZiag/HRwcvCXiRCaTMbUyuxnGdgxsd23XGcFp1DRNt9KwtbWVKxQKy4eHhys7OztLtMu0DS1MOqaxD9Sn/atmx06CGXc6nRFNxomJ8/VqtbrCmNIwT8QZFpCtG9sJvgNqNKvZcZfD4ZgktwFuly5CiRR8oX9Tg/yv7O7uxnO5nEFdqysC43BqTUszRBFjm2Zra6tJ5D/pewzWDe1g4ZfUeEE2jB/S9wb+O8TjV9oLD8jtfSL2klN+zSx9ch6CEbgMg4wPy4Zx7VjRLkMCbHUe3oFq1YQqFGEbto6hx6cMlp1y8gJOrOm78ANkbDm2sPqa+y0+wCAcyTo8H6jge+G4E0t2fZb09A5BFI5Sa/1cgCdgraqtrkMMNmyoVQnqBAWn81HKFkHpq0krPgQZW1Hp/ynowK42ocfnGjwHFbQ1ZwlUejVpNd2cKTirDiQjRavVFV0SfoEWSzXaOouPoIqxdBGO3mk5VpHfAI86UAm+N77doNPWrnRISl0H6C3egzjUXjyktOiK1wKU40mQcxW7UEl9hTwcgHL2B+RA7QLoDOT4M6j8NK6dKlV6nGoR3AatouSn4RuonlXwqlE500Qtqq/lXGPqC4N2p7m7sGYYRvwvf7tXfijRyroAAAAASUVORK5CYII=');}
+            .table_b{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMzSURBVEhLfZRNT1NBFIZv6RctH20AbYpgTBUMAT+gBkQgITFEF7rQuPIXuPAfuDAxcenPcGOiiXtdAolIVEJJqnSB2FpSWqAJLa201+dtewnWC2/y5N6ZOXPmzJkz4zBOkcfjuReNRl+Njo72u91uMx6PVxYXF1/v7e09YzhXt7KXs/G1k6+7u/vR3NzcndnZWX8kEnH5/X5PIpEwstnsPOO/62b2aml87dQbCoWmoL1cLjv29/cdwWDQ0dfXd8nlct1k3F03s9eJjknDSE9PzxApcCSTSXNjY8MolUpGOBzubG9vn8HkTN3SXic57mDyVFdXV6hYLJqrq6vVhYWF6vb2thkIBJyk6Do2V+qm9jrJcT8OJtra2jzk0+DQ8rFYjMCTFQ2y4Dl2cotfv9p2snPcgsaIeKBSqRipVMpIp9NrRPt+c3NzJ5/PG4z5fT6fHPfVp/wvO8dBJk17vd4eOcFZiag/HRwcvCXiRCaTMbUyuxnGdgxsd23XGcFp1DRNt9KwtbWVKxQKy4eHhys7OztLtMu0DS1MOqaxD9Sn/atmx06CGXc6nRFNxomJ8/VqtbrCmNIwT8QZFpCtG9sJvgNqNKvZcZfD4ZgktwFuly5CiRR8oX9Tg/yv7O7uxnO5nEFdqysC43BqTUszRBFjm2Zra6tJ5D/pewzWDe1g4ZfUeEE2jB/S9wb+O8TjV9oLD8jtfSL2klN+zSx9ch6CEbgMg4wPy4Zx7VjRLkMCbHUe3oFq1YQqFGEbto6hx6cMlp1y8gJOrOm78ANkbDm2sPqa+y0+wCAcyTo8H6jge+G4E0t2fZb09A5BFI5Sa/1cgCdgraqtrkMMNmyoVQnqBAWn81HKFkHpq0krPgQZW1Hp/ynowK42ocfnGjwHFbQ1ZwlUejVpNd2cKTirDiQjRavVFV0SfoEWSzXaOouPoIqxdBGO3mk5VpHfAI86UAm+N77doNPWrnRISl0H6C3egzjUXjyktOiK1wKU40mQcxW7UEl9hTwcgHL2B+RA7QLoDOT4M6j8NK6dKlV6nGoR3AatouSn4RuonlXwqlE500Qtqq/lXGPqC4N2p7m7sGYYRvwvf7tXfijRyroAAAAASUVORK5CYII=');}
+            .arrow{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAYCAYAAAD+vg1LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADgSURBVEhLrdU/DsFwGIfxIhaJhMRqFQfgAkyMNo7AETgCm9XEETgBF7CYGBjZTAYJzyveQSv993uf5BPRNN80qZZHNcxRlC+W1fHCBV05YJUOqxUqcM4/LG4YwKl/w2qDKlIVNizuGCGDREUNqx3k3NjFHRYPTJBHZEmG1R5NhJZmWDwxQwF/SzusTmgjkOuwWqCET9nvp0Uy/pPrFR/RQiCXmzeF6c2Tn1sDoSUZlgdkDNMHZAs5N3ZRw/ISGsL0JbSG6Wvzij6c8g8vYfrXdEZHDliUQxlyY3o4wCDPewOcvc4r+HKDxAAAAABJRU5ErkJggg==');}
             .search{margin:5px;} 
-            .single{margin-top:80px;}
-            .multiple{margin-top:60px;}
+            .single{margin-top:80px;background-color:#FFFF00;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVEhL7dXPygFRGMfx8af827sGCylRtnYWpiyUrTdKWdlbyM5VcA/iAtiR4hos7Kwp5eX7PFOKeE9vDgv51Wc6z5k6T3OaOeN8RGIY44iTJb8YIernUoUsHoHPkjCk0Y80iGOFA2xF1loiLg1emm8DY74NjHl5A/nqushjIhMWo2u+5Qk6kLOjLROGNCDnVl+rv9PDThrkMMQAts6jEGpwZYvmKGGPR6kg7Q01GZS94d3s4GKhlSFBbJDSyksWawS0ejItTL3hJbK1MzS1eiJFbJHQ6jpJyL2CVv+MvC23v0GTOj4ujnMGPnw/g7DGSSMAAAAASUVORK5CYII=');}
+            .multiple{margin-top:60px;background-color:#FFFF00;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADVSURBVEhL7ZNNCsIwEEajFxD0Hi78uYWIuCp4JvFooi50oSfwAoqU+n1mAiIx02nJrg8eSehMJyQTB3bwAasaMm4LTTzh0E9VRpDxJrgzC6b4vozZ6Aqo9KD1kgnzasO2G/hpHvjQShgeU5DM4QXGvqdk/BlOYZITXEHrXTF+DQ+flcCdsvpdRsKdNG0E5jE/SSjUlCp7m3YFVLIX0J582y5S0d7BRsYYzCu1IzrChZ9GSeUv4d5P/zODN8ijsnqFE9gK/iiJpYsK+LtL8r1+wTEUnHsDtVdO7plPK7IAAAAASUVORK5CYII=');}
             .setting-1{margin:10%;}
             .item_0{margin:0px;}
-            .plus{background-color:#00ced1;margin:0px;width:24px;height:24px;
+            .plus{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFOSURBVEhLvdVNK0RRHMfxi7dAUaYseBUsPe2YlKyUJSvZsLTkLZDsbSSTKEveA0qJjbIyFOXx+5t7znRGf3fmmHv96jPn3Omc/+0+nHM7kuz0oYwplNAD5QG3OMA+7hGVQezhA19NaIzGak5LmcEzrGJZnjCNzKzgE1aBVuhqlmFmDu0U91RjFg3pRxXWhL94hF6QenZhDQytw0d9a0xoG0knBjCvg5yzgJJOoPdcbd7pQlmFJ2qHxWRSK/kKQ7XDxqy51uccZ2k3GcFw2q1nw7VhLvSjBWI9pNhYNaq6Rc32o7aSdYs2Xetz6iijTphV14a51M8xrMv7KXYdyJFuUQVF5dCfQPtH3tHGV9EJbrCjf3LOFu7S7j9sdso43mFNiPGGMZgp9IPjU+gn06cb2lteYBULaYzGak509KCWcIJrvDrqa4Euohe/JEm+AafR85Yqyw7QAAAAAElFTkSuQmCC');margin:0px;width:24px;height:24px;
                   margin-right:20%;} 
-            .text_bar{width:100%;height:24px;}
+            .text_bar{width:100%;height:24px;color:#FFFFFF;}
 
-            .single_part{margin:0px;background-color:#afeeee;margin-top:10px;width:100%;
+            .single_part{margin:0px;margin-top:10px;width:100%;
                          height:80%;}
-            .multiple_part{margin:0px;background-color:#e0ffff;margin-top:140px;width:100%;
+            .multiple_part{margin:0px;margin-top:140px;width:100%;
                            height:70%;}
              
         </style>
-    <script>
-    $(function() {
-        $( ".sortable" ).sortable();
-        $( ".sortable" ).disableSelection();
-    });
-    </script>
     </head>
     <body>
         <div class="all" >
@@ -77,21 +75,21 @@
                         <div class="single_part">
                             <div class="text_bar">
                                 <div class="button item_0 arrow"></div>
-                                <div>12313</div>
+                                <div>PA31-MQ102</div>
                             </div>
                             <div class="text_bar">
-                                <div class="button item_0 arrow"></div>
-                                <div class="Aside-left">12313</div>
+                                <div class="button item_0 "></div>
+                                <div class="Aside-left">Hardware</div>
                                 <div class="Aside-right plus"></div>
                             </div>
                             <div class="text_bar">
-                                <div class="button item_0 arrow"></div>
-                                <div class="Aside-left">12313</div>
+                                <div class="button item_0"></div>
+                                <div class="Aside-left">Software</div>
                                 <div class="Aside-right plus"></div>
                             </div>
                             <div class="text_bar">
-                                <div class="button item_0 arrow"></div>
-                                <div class="Aside-left">12313</div>
+                             	<div class="button item_0 "></div>
+                                <div class="Aside-left">Sensor</div>
                                 <div class="Aside-right plus"></div>
                             </div>
                         </div>
@@ -103,30 +101,158 @@
                     <div class="Aside-right logo">LOGO</div>
                     <div class="Aside-left setting_bar">
                         <div class="Aside-left">
-                            <div class="button set">1</div>
-                            <div class="button add">2</div>
+                            <div class="button set"></div>
+                            <div class="button add"></div>
                         </div>
                         <div class="Aside-left">
                             <input type="text" class="search"/>
                         </div>
                         <div class="Aside-left">
-                            <div class="button table_a">3</div>
-                            <div class="button table_b">4</div>
+                            <div class="button table_a"></div>
+                            <div class="button table_b"></div>
                         </div>
                     </div>
                 </div>
-                <div class="right_bottom">
-                    <div class="sortable">
-                        <div class="ui-state-default" >a</div>                    
-                        <div class="ui-state-default" >a</div>                    
-                        <div class="ui-state-default" >a</div>                    
-                        <div class="ui-state-default" >a</div>                    
-                        <div class="ui-state-default" >a</div>                    
-                        <div class="ui-state-default" >a</div>                    
-                        <div class="ui-state-default" >a</div>                    
-                    </div>
+		<div class="right_bottom">
+		    <div class="main-inner">
+			<div class="container">
+			    <div class="lead" style="text-align: center;">
+				<div id="widgets" class="row">
+						<div class="span3 search">
+						    <div id="general-info-widget" class="widget widget-table action-table">
+							<div class="widget-header">
+							    <i class="icon-info-sign"></i>
+							    <h3>
+								General Info
+							    </h3>
+							    <div id="refresh-os" class="btn icon-refresh js-refresh-info"></div>
+							    </div><!-- /widget-header -->
+							    <div class="widget-content">
+							    <div class="general-info-item">
+								<span class="general-title">OS</span>
+								<span class="general-data" id="os-info"></span>
+							    </div>
+							    <div class="general-info-item">
+								<span class="general-title">Uptime</span>
+								<span id="os-uptime"></span>
+							    </div>
+							    <div class="general-info-item">
+								<span class="general-title">Server Time</span>
+								<span id="os-time"></span>
+							    </div>
+							    <div class="general-info-item">
+								<span class="general-title">Hostname</span>
+								<span id="os-hostname"></span>
+							    </div>
+							</div>
+						    </div><!-- /widget -->
+						</div> <!-- /span3 -->
+
+						<div class="span4 search">
+						    <div id="load-average-widget" class="widget">
+							<div class="widget-header">
+							    <i class="icon-laptop"></i>
+							    <h3>
+								Temperature
+							    </h3>
+							    <div id="refresh-cpu" class="btn icon-refresh js-refresh-info"></div>
+							</div><!-- /widget-header -->
+							<div class="widget-content">
+							    <div style="text-align:center;">
+								<b>Number of cores:</b> <span class="lead" id="core-number">0</span>
+							    </div>
+							    <div class="cf big_stats">
+							    	<div class="stat">
+								    <i class="icon-#">1 min&nbsp;</i> <span class="value odometer" id="cpu-1min-per"></span> %<br>
+								    <span class="value" id="cpu-1min"></span>
+							    	</div><!-- .stat -->
+							    	<div class="stat">
+							    	    <i class="icon-#">5 min&nbsp;</i> <span class="value odometer" id="cpu-5min-per"></span> %<br>
+							    	    <span class="value" id="cpu-5min"></span>
+							    	</div><!-- .stat -->
+							    	<div class="stat">
+							    	    <i class="icon-#">15 min&nbsp;</i> <span class="value odometer" id="cpu-15min-per"></span> %<br>
+							    	    <span class="value" id="cpu-15min"></span>
+							    	</div><!-- .stat -->
+						    	    </div>
+						    	</div><!-- /widget-content -->
+						    </div><!-- /widget -->
+						</div> <!-- /span4 -->
+
+						<div class="span5 search">
+						    <div id="ram-widget" class="widget widget-nopad">
+							<div class="widget-header">
+							    <i class="icon-list-alt"></i>
+							    <h3>
+								RAM
+							    </h3>
+							    <div id="refresh-ram" class="btn icon-refresh js-refresh-info"></div>
+							</div><!-- /widget-header -->
+							<div class="widget-content">
+							    <div class="big-stats-container">
+								<div class="widget-content">
+								    <div class="cf big_stats">
+								    	<div class="stat">
+									    <i class="icon-#">Total&nbsp;</i> <span class="value odometer" id="ram-total"></span> MB
+									</div><!-- .stat -->
+									<div class="stat">
+									    <i class="icon-#">Used&nbsp;</i> <span class="value odometer" id="ram-used"></span> MB<br>
+									    <span class="value odometer" id="ram-used-per"></span> %
+									</div><!-- .stat -->
+								    	<div class="stat">
+									    <i class="icon-#">Free&nbsp;</i> <span class="value odometer" id="ram-free"></span> MB<br>
+									    <span class="value odometer" id="ram-free-per"></span> %
+								    	</div><!-- .stat -->
+								    </div>
+							    	</div><!-- /widget-content -->
+							    </div>
+						    	</div>
+						    </div>
+						</div> <!-- /span5 -->
+
+						<div class="span6 search">
+						    <div id="memcached-widget" class="widget widget-nopad">
+							<div class="widget-header">
+							    <i class="icon-list-alt"></i>
+							    <h3>
+								Memcached
+							    </h3>
+							    <div id="refresh-memcached" class="btn icon-refresh js-refresh-info"></div>
+							</div><!-- /widget-header -->
+							<div class="widget-content">
+							    <div class="big-stats-container">
+								<div class="widget-content">
+								    <div class="cf big_stats">
+									<div class="stat">
+									    <i class="icon-#">Total&nbsp;</i> <span class="value odometer" id="memcached-total"></span> MB
+									</div><!-- .stat -->
+									<div class="stat">
+									    <i class="icon-#">Used&nbsp;</i> <span class="value odometer" id="memcached-used"></span> MB<br>
+									    <span class="value odometer" id="memcached-used-per"></span> %
+									</div><!-- .stat -->
+									<div class="stat">
+									    <i class="icon-#">Free&nbsp;</i> <span class="value odometer" id="memcached-free"></span> MB<br>
+									    <span class="value odometer" id="memcached-free-per"></span> %
+									</div><!-- .stat -->
+								    </div>
+								</div><!-- /widget-content -->
+							    </div>
+							</div>
+						    </div>
+						</div> <!-- /span6 -->
+					    </div><!-- #/widgets -->
+					</div>
+			</div>
+		    </div>
                 </div>
             </div>
         </div>
+ 	<script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="js/odometer.js" type="text/javascript"></script>
+        <script src="js/dashboard.js" type="text/javascript"></script>
+        <script src="js/base.js" type="text/javascript"></script>
     </body>
 </html>
