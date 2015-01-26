@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Monitor your Linux server through a simple web dashboard. Open source and free!">
         <meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<link href="css/jquery-ui.min.css" type="text/css" rel="stylesheet">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -51,6 +53,7 @@
             .item_0{margin:0px;}
             .plus{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFOSURBVEhLvdVNK0RRHMfxi7dAUaYseBUsPe2YlKyUJSvZsLTkLZDsbSSTKEveA0qJjbIyFOXx+5t7znRGf3fmmHv96jPn3Omc/+0+nHM7kuz0oYwplNAD5QG3OMA+7hGVQezhA19NaIzGak5LmcEzrGJZnjCNzKzgE1aBVuhqlmFmDu0U91RjFg3pRxXWhL94hF6QenZhDQytw0d9a0xoG0knBjCvg5yzgJJOoPdcbd7pQlmFJ2qHxWRSK/kKQ7XDxqy51uccZ2k3GcFw2q1nw7VhLvSjBWI9pNhYNaq6Rc32o7aSdYs2Xetz6iijTphV14a51M8xrMv7KXYdyJFuUQVF5dCfQPtH3tHGV9EJbrCjf3LOFu7S7j9sdso43mFNiPGGMZgp9IPjU+gn06cb2lteYBULaYzGak509KCWcIJrvDrqa4Euohe/JEm+AafR85Yqyw7QAAAAAElFTkSuQmCC');margin:0px;width:24px;height:24px;
                   margin-right:20%;} 
+            .less{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACfklEQVRIia1WTU8UQRBtTNSosDG7s+x0b9errhoT4oET4S/wCzQmEI1GLxyNBgInDT+Ck16AEPSiNz4O/BgCR00EDSDLeNiZ3WUdlo/lJZ1Muqvfq6ruqh5jegCACtG8AlsK3hPCsRCOBbzbnMNcHMehF0chuFYTAb4quJFwSPMhhCMhHHXOKbghwJq1li9FLnU8V/DvhEMq4AMlLArRRKlUKuc2pVKpLEQTSlgU8EFuy95P9SQPHrMtz4g/uyEXXeSQG3KRev7UjpLenet5FvJJIHp1qXA7nSN6KcDfhEPK3k+eWeRaTVpp8fzmquQtJ71/3UwX9lUV7QXgS8IhVc8r1yXPoeDlLMWrxpjmVVRwQwiHFEWuX4EoiqwQDhXcsNayEaL5LPfL/ZLnEGAp4ZAGj1mjwFbCIX0EeXpjAnU8yW7UhlHwXsIhpeHhpMD23sMLYIy5270JgGaHvWOEcJxwSKumOthld0vBfzqrtmgo8c8Cx+7nld8SKJfLpW6BvEp7CoB/dLPXjHnQFgDvJhxStvZxgSd3qqY62GuMjY3d7t7knBtppSg/ZKnjRYHAtZB3BSFaNwrMZWrfb0ogEH3LrumMieM4KLih4IZzbqRfcufcSMZ30moXAqw1DwxbxpiBPvgHFNj8r+1Yazm/MQp8vC67Ah+aDRO/6uW6P7PI3k919PQFc7VIBoRoId8fiJ4VWgnx+5aR521f86MXMfuaHw2et9uFR297bmDvJwXYz4roVIHNQDRNMY37SqXuK5U6xTQeiKYV2FTwaZ6Wcz3vhqpCiVe7H/1zKvlEPa845+hS5J2w1nLwmBWiDQF28r+K5jetB4+ZMy9XAf4BbFPzO8MgKcUAAAAASUVORK5CYII=');margin:0px;width:24px;height:24px;}
             .text_bar{width:100%;height:24px;color:#FFFFFF;}
 
             .single_part{margin:0px;margin-top:10px;width:100%;
@@ -59,6 +62,9 @@
                            height:70%;}
             .map{margin:10px;background-color:#888888;height:500px;} 
             .machine{float:left;margin:10px;background-color:#888888;width:32%;height:300px;} 
+	    .text_list{margin-top:10px;}
+	    .text_page{display:none;}
+	    .text_page{margin-left:30px;color:#FFFFFF;width:60%;}
         </style>
     </head>
     <body>
@@ -78,40 +84,55 @@
                                 <div class="button item_0 arrow"></div>
                                 <div>PA31-MQ102</div>
                             </div>
-                            <div class="text_bar">
+                            <div class="text_bar text_list">
                                 <div class="button item_0 "></div>
-                                <div class="Aside-left">Hardware</div>
+                                <div class="text_btn Aside-left">Hardware</div>
                                 <div class="Aside-right plus"></div>
                             </div>
-                            <div class="text_bar">
+			    <div id="Hardware" class="text_page">
+				<p>CPU:</p><p></p>
+			    </div>
+                            <div class="text_bar text_list">
                                 <div class="button item_0"></div>
-                                <div class="Aside-left">Software</div>
+                                <div class="text_btn Aside-left">Software</div>
                                 <div class="Aside-right plus"></div>
                             </div>
-                            <div class="text_bar">
+			    <div id="Software" class="text_page">
+				<p>OS:</p><p></p>
+				<p>System Time:</p><p></p>
+				<p>Uptime:</p><p></p>
+				<p>Hostname:</p><p></p>
+			    </div>
+                            <div class="text_bar text_list">
                              	<div class="button item_0 "></div>
-                                <div class="Aside-left">Sensor</div>
+                                <div class="text_btn Aside-left">Sensor</div>
                                 <div class="Aside-right plus"></div>
                             </div>
+			    <div id="Sensor" class="text_page">
+				<p>Voltage:</p><p></p>
+				<p>Electric:</p><p></p>
+				<p>Temperature:</p><p></p>
+			    </div>
                         </div>
                     </div>
                     <div id="multiple_bar" style="display:none">
                         <div class="multiple_part">
                             <div class="text_bar">
                                 <div class="button item_0 arrow"></div>
-                                <div class="button item_0"></div>
-                                <div class="Aside-left">Group</div>
+                                <div >Group</div>
                             </div>
-                            <div class="text_bar">
+                            <div class="text_bar text_list">
                                 <div class="button item_0"></div>
-                                <div class="Aside-left">Devices</div>
+                                <div class="text_btn Aside-left">Devices</div>
                                 <div class="Aside-right plus"></div>
                             </div>
-                            <div class="text_bar">
+			    <div id="Devices" class="text_page">4</div>
+                            <div class="text_bar text_list">
                                 <div class="button item_0"></div>
-                                <div class="Aside-left">Sensor</div>
+                                <div class="text_btn Aside-left">Sensor</div>
                                 <div class="Aside-right plus"></div>
                             </div>
+			    <div id="Sensor" class="text_page">5</div>
 		    	</div>
 		    </div>
                 </div>
@@ -125,7 +146,7 @@
                             <div class="button add"></div>
                         </div>
                         <div class="Aside-left">
-                            <input type="text" class="search"/>
+                            <input type="search" class="search"/>
                         </div>
                         <div class="Aside-left">
                             <div class="button table_a"></div>
@@ -284,6 +305,13 @@
                 </div>
 		</div>
             </div>
+
+	    <div id="setting_part" >
+		<p>Setting Page</p>	
+	    </div>
+	    <div id="add_part" >
+		<p>Add Page</p>	
+	    </div>
         </div>
  	<script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
@@ -305,6 +333,44 @@
 		$("#single_part").attr("style","display:none");
 		$("#multiple_bar").attr("style","");
 		$("#multiple_part").attr("style","");
+	    });
+	    $(".text_btn").click(function(){
+		$(".text_page").attr("style","displat:none");
+		$("#" + $(this).text()).attr("style","display:block");
+	    });
+	     $( "#setting_part" ).dialog({
+		autoOpen: false,
+		resizable: false,
+		height:500,
+		modal: true,
+		buttons: {
+			"OK": function() {
+			    $( this ).dialog( "close" );
+			},
+		Cancel: function() {
+			    $( this ).dialog( "close" );
+			}
+	        }
+	    });
+	     $( "#add_part" ).dialog({
+		autoOpen: false,
+		resizable: false,
+		height:500,
+		modal: true,
+		buttons: {
+			"OK": function() {
+			    $( this ).dialog( "close" );
+			},
+		Cancel: function() {
+			    $( this ).dialog( "close" );
+			}
+	        }
+	    });
+	    $(".set").click(function(){
+		$( "#setting_part" ).dialog("open");
+	    });
+	    $(".add").click(function(){
+		$( "#add_part" ).dialog("open");
 	    });
 	</script>
     </body>
