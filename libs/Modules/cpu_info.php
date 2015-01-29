@@ -16,10 +16,12 @@
 			
             $result = array_filter($result);
 
-			foreach ($result as $a) {
-				$p = explode(':', $a);
+		foreach ($result as $a) {
+		$p = explode(':', $a);
 
-                $data[$p[0]] = $p[1];
+                //$data[$p[0]] = $p[1];
+		return $p[1];
+		break;
             }
 			
 			return $data;

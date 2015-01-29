@@ -126,7 +126,7 @@ $('#open-all-widgets').click(function(){
 });
 
 // attach a close button to all widget headers
-$('.widget-header').append('<div class="btn btn-icon-only icon-remove hide-widget"></div>');
+//$('.widget-header').append('<div class="btn btn-icon-only icon-remove hide-widget"></div>');
 
 // hide / close widget function
 $('.hide-widget').live('click',function(){

@@ -6,8 +6,9 @@
         protected $name = 'issue';
 
         public function getData($args=array()) {
-            return array(
-            	'OS' => shell_exec('/usr/bin/lsb_release -ds;/bin/uname -r')
-            );
+            //return array(
+            //	'OS' => shell_exec('/usr/bin/lsb_release -ds;/bin/uname -r')
+            //);
+            return shell_exec('/usr/bin/lsb_release -ds;/bin/uname -r');
         }
     }

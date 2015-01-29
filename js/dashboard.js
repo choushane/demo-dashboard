@@ -116,6 +116,9 @@ dashboard.fillElement = function(module, $el){
     });
 };
 
+dashboard.getCpu = function () {
+    this.fillElement("cpu_info", $("#cpu"));
+};
 dashboard.getPs = function () {
     moduleData("ps", function (data) {
         destroy_dataTable("ps_dashboard");
@@ -616,22 +619,25 @@ dashboard.fnMap = {
     all: dashboard.getAll,
     ram: dashboard.getRam,
     memcached: dashboard.getMemcached,
-    ps: dashboard.getPs,
-    df: dashboard.getDf,
+    cpua: dashboard.getCpu,
+//    ps: dashboard.getPs,
+//    df: dashboard.getDf,
     os: dashboard.getOs,
-    users: dashboard.getUsers,
-    online: dashboard.getOnline,
-    lastlog: dashboard.getLastLog,
-    whereis: dashboard.getWhereIs,
-    ip: dashboard.getIp,
-    ispeed: dashboard.getIspeed,
-    sabspeed: dashboard.getSabspeed,
+//    users: dashboard.getUsers,
+//    online: dashboard.getOnline,
+//    lastlog: dashboard.getLastLog,
+//    whereis: dashboard.getWhereIs,
+//    ip: dashboard.getIp,
+//    ispeed: dashboard.getIspeed,
+//    sabspeed: dashboard.getSabspeed,
     cpu: dashboard.getLoadAverage,
+/*  
     netstat: dashboard.getNetStat,
     dnsmasqleases: dashboard.getDnsmasqLeases,
     bandwidth: dashboard.getBandwidth,
     ping: dashboard.getPing,
     swap: dashboard.getSwaps,
     arp: dashboard.getArp,
-	redis: dashboard.redis
+    redis: dashboard.redis
+*/
 };
