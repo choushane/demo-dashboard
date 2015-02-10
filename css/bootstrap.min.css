@@ -126,7 +126,7 @@ float:left;
 margin-left:20px;
 }
 .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
-	width: 80%;
+	width: 100%;
 }
 .span12 {
 	width: 940px;
@@ -255,8 +255,8 @@ margin-left:2.127659574%;
 	width: 6.382978723%;
 }
 .container {
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 5px;
+	margin-right: 5px;
 *zoom:1;
 }
 .container:before, .container:after {
@@ -290,7 +290,7 @@ p small {
 }
 .lead {
 	margin-bottom: 18px;
-	font-size: 20px;
+	font-size: 0px;
 	font-weight: 200;
 	line-height: 27px;
 }
