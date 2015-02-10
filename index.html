@@ -19,42 +19,48 @@
             body{margin: 0px;}
             .Aside-left{float:left;}
             .Aside-right{float:right;}
-            .all{background-color:#000000;width:1920px;height:1080px;z-index:1;
+            .all{background-color:#14406a;width:1920px;height:1080px;z-index:1;
                  margin:0px;}
-            .left_all{width:12%;height:100%;z-index:2;
+            .left_all{width:300px;z-index:2;
                       }
-            .left_left{background-color:#000000;width:15%;height:100%;z-index:3;
+            .left_left{width:50px;height:100%;
                        }
-            .left_right{background-color:#2f4f4f;width:85%;height:100%;
-                        z-index:3;
+            .left_right{background-color:#14406a;width:240px;height:100%;
                         } 
-            .right_all{background-color:#556B2F;width:88%;height:100%;
+            .right_all{width:84%;height:100%;
                        z-index:2;}
-            .right_top{width:100%;height:8%;z-index:3;
+            .right_top{background-image:url('./img/header_bg.png');width:100%;height:8%;z-index:3;
                        }
             .right_bottom{width:100%;height:92%;z-index:4;
                        }
-            .logo{background-color:#adff2f;margin-top:1%;margin-right:1%;
-                  z-index:4;width:120px;height:40px;}
+            .logo{background-image:url('./img/logo.png');margin-top:0px;
+                 width:181px;height:60px;}
+            .head{background-image:url('./img/userinfo.png');margin-top:0px;
+                 width:50px;height:50px;}
             .setting_bar{
                          margin-top:1%;margin-left:2%;
-                         z-index:4;width:25%;height:40px;}
+                         z-index:4;height:40px;}
             .button{float:left;margin:5px;width:24px;height:24px;
                     }
-            .set{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHASURBVEhLrZXNTsJAFIWHQi2BRJtQQ0LcEhMTX8H38Bnc+SysdKkvRKIhcUli2IggFEioLd4z7ZRrnf4McpKPDjOnczq3PyNIXWJA7I7EA3FJnBC1Gv0MxuPxneu61NyrJodilbXVMQxDMZlMRL/ff6a/98QXRnbz+VwACOYiyjxRFIlOpwPbFfFuoWVZltaso8zbaDQwJXRGODIAwmDVoDJfIpsgJ4kPmqwmD65fK1BUCSnycMmbvFwuxWKxkIO9Xi8eMRTmUAHtdhtdN8SbDPB9Pw3gQNk+HVlfq9VClwzQlkhx6E3nkitYrVbpErtdvNjm2mw28og5ms0mmvsSIQBl4leRBdL1c5THcRw0y0vEMXmyuOQK1uu1wCow6HlePGKo7XabBiVv875EqB9CIGXKo4qnXq/D9rdEJmUogiv9VOBEgHTVzgOePJ82AOJXoIxlZH06yQB+gxSmIUrT6TRpxULA42g0EkEQCNu2tScXwTWbzcRwOETzlQgJbKHignhK/hyDF+KWuCZcXAI251PinMAuhIdYX9Bq+iZ84oP4xEQAuw8+IAiTD/E/FBEBgY9TwK9UhfG+Q5WUS+x+AJBSmhoSFOtYAAAAAElFTkSuQmCC');}
-            .add{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFOSURBVEhLvdVNK0RRHMfxi7dAUaYseBUsPe2YlKyUJSvZsLTkLZDsbSSTKEveA0qJjbIyFOXx+5t7znRGf3fmmHv96jPn3Omc/+0+nHM7kuz0oYwplNAD5QG3OMA+7hGVQezhA19NaIzGak5LmcEzrGJZnjCNzKzgE1aBVuhqlmFmDu0U91RjFg3pRxXWhL94hF6QenZhDQytw0d9a0xoG0knBjCvg5yzgJJOoPdcbd7pQlmFJ2qHxWRSK/kKQ7XDxqy51uccZ2k3GcFw2q1nw7VhLvSjBWI9pNhYNaq6Rc32o7aSdYs2Xetz6iijTphV14a51M8xrMv7KXYdyJFuUQVF5dCfQPtH3tHGV9EJbrCjf3LOFu7S7j9sdso43mFNiPGGMZgp9IPjU+gn06cb2lteYBULaYzGak509KCWcIJrvDrqa4Euohe/JEm+AafR85Yqyw7QAAAAAElFTkSuQmCC');}
-            .table_a{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMzSURBVEhLfZRNT1NBFIZv6RctH20AbYpgTBUMAT+gBkQgITFEF7rQuPIXuPAfuDAxcenPcGOiiXtdAolIVEJJqnSB2FpSWqAJLa201+dtewnWC2/y5N6ZOXPmzJkz4zBOkcfjuReNRl+Njo72u91uMx6PVxYXF1/v7e09YzhXt7KXs/G1k6+7u/vR3NzcndnZWX8kEnH5/X5PIpEwstnsPOO/62b2aml87dQbCoWmoL1cLjv29/cdwWDQ0dfXd8nlct1k3F03s9eJjknDSE9PzxApcCSTSXNjY8MolUpGOBzubG9vn8HkTN3SXic57mDyVFdXV6hYLJqrq6vVhYWF6vb2thkIBJyk6Do2V+qm9jrJcT8OJtra2jzk0+DQ8rFYjMCTFQ2y4Dl2cotfv9p2snPcgsaIeKBSqRipVMpIp9NrRPt+c3NzJ5/PG4z5fT6fHPfVp/wvO8dBJk17vd4eOcFZiag/HRwcvCXiRCaTMbUyuxnGdgxsd23XGcFp1DRNt9KwtbWVKxQKy4eHhys7OztLtMu0DS1MOqaxD9Sn/atmx06CGXc6nRFNxomJ8/VqtbrCmNIwT8QZFpCtG9sJvgNqNKvZcZfD4ZgktwFuly5CiRR8oX9Tg/yv7O7uxnO5nEFdqysC43BqTUszRBFjm2Zra6tJ5D/pewzWDe1g4ZfUeEE2jB/S9wb+O8TjV9oLD8jtfSL2klN+zSx9ch6CEbgMg4wPy4Zx7VjRLkMCbHUe3oFq1YQqFGEbto6hx6cMlp1y8gJOrOm78ANkbDm2sPqa+y0+wCAcyTo8H6jge+G4E0t2fZb09A5BFI5Sa/1cgCdgraqtrkMMNmyoVQnqBAWn81HKFkHpq0krPgQZW1Hp/ynowK42ocfnGjwHFbQ1ZwlUejVpNd2cKTirDiQjRavVFV0SfoEWSzXaOouPoIqxdBGO3mk5VpHfAI86UAm+N77doNPWrnRISl0H6C3egzjUXjyktOiK1wKU40mQcxW7UEl9hTwcgHL2B+RA7QLoDOT4M6j8NK6dKlV6nGoR3AatouSn4RuonlXwqlE500Qtqq/lXGPqC4N2p7m7sGYYRvwvf7tXfijRyroAAAAASUVORK5CYII=');}
-            .table_b{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMzSURBVEhLfZRNT1NBFIZv6RctH20AbYpgTBUMAT+gBkQgITFEF7rQuPIXuPAfuDAxcenPcGOiiXtdAolIVEJJqnSB2FpSWqAJLa201+dtewnWC2/y5N6ZOXPmzJkz4zBOkcfjuReNRl+Njo72u91uMx6PVxYXF1/v7e09YzhXt7KXs/G1k6+7u/vR3NzcndnZWX8kEnH5/X5PIpEwstnsPOO/62b2aml87dQbCoWmoL1cLjv29/cdwWDQ0dfXd8nlct1k3F03s9eJjknDSE9PzxApcCSTSXNjY8MolUpGOBzubG9vn8HkTN3SXic57mDyVFdXV6hYLJqrq6vVhYWF6vb2thkIBJyk6Do2V+qm9jrJcT8OJtra2jzk0+DQ8rFYjMCTFQ2y4Dl2cotfv9p2snPcgsaIeKBSqRipVMpIp9NrRPt+c3NzJ5/PG4z5fT6fHPfVp/wvO8dBJk17vd4eOcFZiag/HRwcvCXiRCaTMbUyuxnGdgxsd23XGcFp1DRNt9KwtbWVKxQKy4eHhys7OztLtMu0DS1MOqaxD9Sn/atmx06CGXc6nRFNxomJ8/VqtbrCmNIwT8QZFpCtG9sJvgNqNKvZcZfD4ZgktwFuly5CiRR8oX9Tg/yv7O7uxnO5nEFdqysC43BqTUszRBFjm2Zra6tJ5D/pewzWDe1g4ZfUeEE2jB/S9wb+O8TjV9oLD8jtfSL2klN+zSx9ch6CEbgMg4wPy4Zx7VjRLkMCbHUe3oFq1YQqFGEbto6hx6cMlp1y8gJOrOm78ANkbDm2sPqa+y0+wCAcyTo8H6jge+G4E0t2fZb09A5BFI5Sa/1cgCdgraqtrkMMNmyoVQnqBAWn81HKFkHpq0krPgQZW1Hp/ynowK42ocfnGjwHFbQ1ZwlUejVpNd2cKTirDiQjRavVFV0SfoEWSzXaOouPoIqxdBGO3mk5VpHfAI86UAm+N77doNPWrnRISl0H6C3egzjUXjyktOiK1wKU40mQcxW7UEl9hTwcgHL2B+RA7QLoDOT4M6j8NK6dKlV6nGoR3AatouSn4RuonlXwqlE500Qtqq/lXGPqC4N2p7m7sGYYRvwvf7tXfijRyroAAAAASUVORK5CYII=');}
-            .arrow{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAYCAYAAAD+vg1LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADgSURBVEhLrdU/DsFwGIfxIhaJhMRqFQfgAkyMNo7AETgCm9XEETgBF7CYGBjZTAYJzyveQSv993uf5BPRNN80qZZHNcxRlC+W1fHCBV05YJUOqxUqcM4/LG4YwKl/w2qDKlIVNizuGCGDREUNqx3k3NjFHRYPTJBHZEmG1R5NhJZmWDwxQwF/SzusTmgjkOuwWqCET9nvp0Uy/pPrFR/RQiCXmzeF6c2Tn1sDoSUZlgdkDNMHZAs5N3ZRw/ISGsL0JbSG6Wvzij6c8g8vYfrXdEZHDliUQxlyY3o4wCDPewOcvc4r+HKDxAAAAABJRU5ErkJggg==');}
+            .set{background-image:url('./img/setting.png');float:left;margin:0px;width:40px;height:40px;}
+            .add{background-image:url('./img/add.png');float:left;margin:0px;width:40px;height:40px;}
+            .table_a{background-image:url('./img/typea.png');float:left;margin:0px;width:40px;height:40px;}
+            .table_b{background-image:url('./img/typeb.png');float:left;margin:0px;width:40px;height:40px;}
+            .device{background-image:url('./img/device.png');float:left;margin:0px;width:40px;height:40px;}
+            .bar{margin:5px;width:240px;height:100%;}
+            .device_name{color:#FFFFFF;height:50px;font-size:20px;line-height:40px;width:190px;}
             .search{margin:5px;} 
-            .single{margin-top:80px;background-color:#FFFF00;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVEhL7dXPygFRGMfx8af827sGCylRtnYWpiyUrTdKWdlbyM5VcA/iAtiR4hos7Kwp5eX7PFOKeE9vDgv51Wc6z5k6T3OaOeN8RGIY44iTJb8YIernUoUsHoHPkjCk0Y80iGOFA2xF1loiLg1emm8DY74NjHl5A/nqushjIhMWo2u+5Qk6kLOjLROGNCDnVl+rv9PDThrkMMQAts6jEGpwZYvmKGGPR6kg7Q01GZS94d3s4GKhlSFBbJDSyksWawS0ejItTL3hJbK1MzS1eiJFbJHQ6jpJyL2CVv+MvC23v0GTOj4ujnMGPnw/g7DGSSMAAAAASUVORK5CYII=');}
-            .multiple{margin-top:60px;background-color:#FFFF00;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADVSURBVEhL7ZNNCsIwEEajFxD0Hi78uYWIuCp4JvFooi50oSfwAoqU+n1mAiIx02nJrg8eSehMJyQTB3bwAasaMm4LTTzh0E9VRpDxJrgzC6b4vozZ6Aqo9KD1kgnzasO2G/hpHvjQShgeU5DM4QXGvqdk/BlOYZITXEHrXTF+DQ+flcCdsvpdRsKdNG0E5jE/SSjUlCp7m3YFVLIX0J582y5S0d7BRsYYzCu1IzrChZ9GSeUv4d5P/zODN8ijsnqFE9gK/iiJpYsK+LtL8r1+wTEUnHsDtVdO7plPK7IAAAAASUVORK5CYII=');}
+            .single{background-image:url('./img/single.png');float:left;margin:0px;width:50px;height:50px;}
+            .multiple{background-image:url('./img/many.png');float:left;margin:0px;width:50px;height:50px;}
+	    .text_btn{color:#FFFFFF;width:190px;height:50px;font-size:18px;line-height:40px;}
+            .hardware{background-image:url('./img/hardware.png');float:left;margin:0px;width:40px;height:40px;}
+            .software{background-image:url('./img/software.png');float:left;margin:0px;width:40px;height:40px;}
+            .sensor{background-image:url('./img/sensor.png');float:left;margin:0px;width:40px;height:40px;}
             .setting-1{margin:10%;}
+	    .list_2{background-image:url('');color:#FFFFFF;width:100%;}
             .item_0{margin:0px;}
-            .plus{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFOSURBVEhLvdVNK0RRHMfxi7dAUaYseBUsPe2YlKyUJSvZsLTkLZDsbSSTKEveA0qJjbIyFOXx+5t7znRGf3fmmHv96jPn3Omc/+0+nHM7kuz0oYwplNAD5QG3OMA+7hGVQezhA19NaIzGak5LmcEzrGJZnjCNzKzgE1aBVuhqlmFmDu0U91RjFg3pRxXWhL94hF6QenZhDQytw0d9a0xoG0knBjCvg5yzgJJOoPdcbd7pQlmFJ2qHxWRSK/kKQ7XDxqy51uccZ2k3GcFw2q1nw7VhLvSjBWI9pNhYNaq6Rc32o7aSdYs2Xetz6iijTphV14a51M8xrMv7KXYdyJFuUQVF5dCfQPtH3tHGV9EJbrCjf3LOFu7S7j9sdso43mFNiPGGMZgp9IPjU+gn06cb2lteYBULaYzGak509KCWcIJrvDrqa4Euohe/JEm+AafR85Yqyw7QAAAAAElFTkSuQmCC');margin:0px;width:24px;height:24px;
-                  margin-right:20%;} 
             .less{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACfklEQVRIia1WTU8UQRBtTNSosDG7s+x0b9errhoT4oET4S/wCzQmEI1GLxyNBgInDT+Ck16AEPSiNz4O/BgCR00EDSDLeNiZ3WUdlo/lJZ1Muqvfq6ruqh5jegCACtG8AlsK3hPCsRCOBbzbnMNcHMehF0chuFYTAb4quJFwSPMhhCMhHHXOKbghwJq1li9FLnU8V/DvhEMq4AMlLArRRKlUKuc2pVKpLEQTSlgU8EFuy95P9SQPHrMtz4g/uyEXXeSQG3KRev7UjpLenet5FvJJIHp1qXA7nSN6KcDfhEPK3k+eWeRaTVpp8fzmquQtJ71/3UwX9lUV7QXgS8IhVc8r1yXPoeDlLMWrxpjmVVRwQwiHFEWuX4EoiqwQDhXcsNayEaL5LPfL/ZLnEGAp4ZAGj1mjwFbCIX0EeXpjAnU8yW7UhlHwXsIhpeHhpMD23sMLYIy5270JgGaHvWOEcJxwSKumOthld0vBfzqrtmgo8c8Cx+7nld8SKJfLpW6BvEp7CoB/dLPXjHnQFgDvJhxStvZxgSd3qqY62GuMjY3d7t7knBtppSg/ZKnjRYHAtZB3BSFaNwrMZWrfb0ogEH3LrumMieM4KLih4IZzbqRfcufcSMZ30moXAqw1DwxbxpiBPvgHFNj8r+1Yazm/MQp8vC67Ah+aDRO/6uW6P7PI3k919PQFc7VIBoRoId8fiJ4VWgnx+5aR521f86MXMfuaHw2et9uFR297bmDvJwXYz4roVIHNQDRNMY37SqXuK5U6xTQeiKYV2FTwaZ6Wcz3vhqpCiVe7H/1zKvlEPa845+hS5J2w1nLwmBWiDQF28r+K5jetB4+ZMy9XAf4BbFPzO8MgKcUAAAAASUVORK5CYII=');margin:0px;width:24px;height:24px;}
-            .text_bar{width:100%;height:24px;color:#FFFFFF;}
+            .text_bar{height:24px;color:#FFFFFF;}
 
             .single_part{margin:0px;margin-top:10px;width:100%;
                          height:80%;}
@@ -64,7 +70,6 @@
             .machine{float:left;margin:10px;background-color:#888888;width:32%;height:300px;} 
 	    .text_list{margin-top:10px;}
 	    .text_page{display:none;}
-	    .text_page{margin-left:30px;color:#FFFFFF;width:60%;}
 	    .text{color:#000000;}
 	    .widget-all{width:85%;}
 	    .degree-64{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADsklEQVR4nO2azW4cRRDHW5ZgbcXGM9OdlwBZxgEEr7BSlMSgDVj5kOUDh5zCaZzpqjwBEBLH2AeeIIE8QhTlIZyPlRJtNiAHc0HZDV2F5OFgpOz27Hh3Z2diWaqfNLfamn/9u6t3VDNKCYIgCIIgCIIgjEGw3l0ywNsG+akBIgNExvITjbwVxJ3FQknrzZpO+LJGumeAWgaJT17/N+29DBIboFaE9KtO6KKqN2sllzaERnvGWP7FF+aJ3DfA22o1nR41bWhpxQD9fljenHu9jBI6X2XJb2m0Zwzyw9HF8YPhJqRTBnh73ML9SyNvKpVOVVr/sJXPEbZ1aM4Siu83oSKC9e7SgBXeCcGdVpd2T6gr6WwA7oxBfuy3Q96ZEFpayRQB9I8B/j5Y7y4N7O96szafdE8Z4B81kvN/X1k7+CtlkHfCOJ3PBF5NA9+EgSuzmk4bdH94Zr2Yvfb6w1E1hXFnwQC1+3IAtVUjfX+yagdgkJ/23igEdzovVls62yfK8qNMTMKX/ZWP4tcfjasrjDsL/k4ILV0YN89QDBD13kRd2j2RG7y2N9e/A8j5IRrpnrejfiiqLQS+1dcGQHeL5solY8CVdDY3eAQDDNKL3pj5pHuqqDZ97c3nfQZYel40Vy7G8pPemwTgzuQKsrTsnxeZfN5DzkQPNJ7hBogK58pDI295RT1WV9MgE/jd35F/XmjkDT/MP70n10d/vb2f2500X4Yg7iwapH3fBG3prFrbm1Nre3Pa0rJfvEHaD+POgp+vdAMsLWtwrzS63cN250QUeWjRwLcH5SrbgHfDajptkB+MWrxBdz+vt4+nAUodmAC87beDv+018O3DDrbja8D/BHFnUSNvGsuPNJLTSM4g72jkjUE973PsDZgUMUAMEAPEADFADBADxAAxQAwQA8SAMgyILH0VgdvT6P7UQOfK0FgplY7EwL0qQ2OlZIaiY7xIzfAuhqJlY4Ba3nzxk6K5Ivvmi95cEfKzMrVWggb6zTPgRuFcyBv9LUV3ytRaCTqhi33DUyQ3yiTJJ0g6H/svbUJLK1VoLpd6s+Z/EGGA2uOYEMSdxQE5WpW8HK2CyNLXmTH6wWzxxrztfqoa7ZnMjxrtmQ/Wu59p5Jv+yh/8A9CXR1BKcTTwz6OO2YddGvnmUddTgHRKI29OXDzwT5V/IlMlUULnDdLLcQs3QC1tafmo9ZdDvVkLLV2IgO5Glp4P7HEkFyE/O3md7oQJfaO+Td87atmCIAiCIAiCIBw//gM7vEnEaNWx5AAAAABJRU5ErkJggg==');}
@@ -94,49 +99,66 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
         <div class="all" >
             <div class="Aside-left left_all">
                 <div class="Aside-left left_left">
-                    <div class="button single"></div>
-                    <div class="button multiple"></div>
+                    <div class="single"></div>
+                    <div class="multiple"></div>
                 </div>
                 <div class="Aside-left left_right">
-                    <div>
-                        <div class="logo setting-1"></div>
+                    <div class="bar">
+			<div class="Aside-left head "></div>
+                        <div class="Aside-left logo "></div>
+                    </div>
+                    <div class="bar">
+                        <div class="Aside-left device"></div>
+                        <div class="Aside-left device_name" >PA31-MQ102</div>
                     </div>
                     <div id="single_bar">
                         <div class="single_part">
-                            <div class="text_bar">
-                                <div class="button item_0 arrow"></div>
-                                <div>PA31-MQ102</div>
+                            <div class="bar">
+                                <div class="hardware Aside-left"></div>
+                                <p class="text_btn Aside-left">Hardware</p>
+			    	<div id="Hardware" class="text_page">
+				    <div class="list_2">
+				        <p>CPU:</p><p class="text" id="cpu"></p>
+				    </div>
+				    <div class="list_2">
+				        <p>RAM:</p><p class="text"></p>
+				    </div>
+			        </div>
                             </div>
-                            <div class="text_bar text_list">
-                                <div class="button item_0 "></div>
-                                <div class="text_btn Aside-left">Hardware</div>
-                                <div class="Aside-right plus"></div>
-                            </div>
-			    <div id="Hardware" class="text_page">
-				<p>CPU:</p><p class="text" id="cpu"></p>
-				<p>RAM:</p><p class="text"></p>
-			    </div>
-                            <div class="text_bar text_list">
-                                <div class="button item_0"></div>
+                            <div class="bar">
+                                <div class="software"></div>
                                 <div class="text_btn Aside-left">Software</div>
-                                <div class="Aside-right plus"></div>
+			    	<div id="Software" class="text_page">
+				    <div class="list_2">
+				    <p>OS:</p><p class="text" id="os-info"></p>
+				    </div>
+				    <div class="list_2">
+				    <p>System Time:</p><p class="text" id="os-time"></p>
+				    </div>
+				    <div class="list_2">
+				    <p>Uptime:</p><p class="text" id="os-uptime"></p>
+				    </div>
+				    <div class="list_2">
+				    <p>Hostname:</p><p class="text" id="os-hostname"></p>
+				    </div>
+			    	</div>
                             </div>
-			    <div id="Software" class="text_page">
-				<p>OS:</p><p class="text" id="os-info"></p>
-				<p>System Time:</p><p class="text" id="os-time"></p>
-				<p>Uptime:</p><p class="text" id="os-uptime"></p>
-				<p>Hostname:</p><p class="text" id="os-hostname"></p>
-			    </div>
-                            <div class="text_bar text_list">
-                             	<div class="button item_0 "></div>
+                            <div class="bar">
+                                <div class="sensor"></div>
                                 <div class="text_btn Aside-left">Sensor</div>
-                                <div class="Aside-right plus"></div>
+                                <div class="Aside-right"></div>
+			    	<div id="Sensor" class="text_page">
+				    <div class="list_2">
+				    <p>Voltage:</p><p></p>
+				    </div>
+				    <div class="list_2">
+				    <p>Electric:</p><p></p>
+				    </div>
+				    <div class="list_2">
+				    <p>Temperature:</p><p></p>
+				    </div>
+			    	</div>
                             </div>
-			    <div id="Sensor" class="text_page">
-				<p>Voltage:</p><p></p>
-				<p>Electric:</p><p></p>
-				<p>Temperature:</p><p></p>
-			    </div>
                         </div>
                     </div>
                     <div id="multiple_bar" style="display:none">
@@ -163,18 +185,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
             </div>    
             <div class="Aside-left right_all">
                 <div class="right_top">
-                    <div class="Aside-right logo">LOGO</div>
+                    <div class="Aside-right logo"></div>
                     <div class="Aside-left setting_bar">
                         <div class="Aside-left">
-                            <div class="button set"></div>
-                            <div class="button add"></div>
+                            <div class="set"></div>
+                            <div class="add"></div>
                         </div>
                         <div class="Aside-left">
                             <input type="search" class="search"/>
                         </div>
                         <div class="Aside-left">
-                            <div class="button table_a"></div>
-                            <div class="button table_b"></div>
+                            <div class="table_a"></div>
+                            <div class="table_b"></div>
                         </div>
                     </div>
                 </div>
