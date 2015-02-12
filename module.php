@@ -32,6 +32,10 @@
         'redis_status',
         'memory_info',
         'cpu_info',
+	'temperature',
+	'VV',
+	'II',
+	'SD',
 		'io_stats',
     );
 

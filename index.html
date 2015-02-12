@@ -401,7 +401,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 							<div style="height:80px;width:100%;">
 							    <div class="Aside-right degree-64" style="width:64px;height:64px;" ></div>
 							    <div class="Aside-right">
-								<p style="margin-top:32px;font-size:64px;">64</p>
+								<p id="temperature" style="margin-top:36px;font-size:58px;"></p>
 							    </div>
 							</div>
 							<div class="Aside-left" style="height:65px;width:140px;">
@@ -429,10 +429,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 							    </div>
 							</div>
 							<div style="height:65px;width:100%;">
-							    <div class="Aside-right degree-48" style="height:48px;width:48px;"></div>
+							    <!--<div class="Aside-right degree-48" style="height:48px;width:48px;"></div>
 							    <div class="Aside-right">
 								<p style="margin-top:25px;font-size:48px;">44</p>
-							    </div>
+							    </div>-->
 							</div>
 						    </div>
 						    <div id="demo-bar" style="margin:0px;width:100%;height:100px;"></div> 
@@ -450,16 +450,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 						<div class="Aside-left sd_card"></div>
 						<div style="height:80px;"></div>
 						<div class="Aside-left" style="width:80px;height:80px;">
-						    <div style="margin:0px;width:100%;height:40px;background-color:#02C874;font-size:30px;line-height:35px;">
-						    5.5G
+						    <div id="sd-total" style="margin:0px;width:100%;height:40px;background-color:#02C874;font-size:30px;line-height:35px;">
+						    --G
 						    </div>
-						    <div style="margin:0px;width:100%;height:40px;background-color:#888888;font-size:30px;line-height:35px;">
-						    8.0G
+						    <div  id="sd-free" style="margin:0px;width:100%;height:40px;background-color:#888888;font-size:30px;line-height:35px;">
+						    --G
 						    </div>
 						</div>
 						    <div id="mysd" class="Aside-right" 
-							data-dimension="150" data-text="35%"
-							data-width="30" data-fontsize="35" 
+							data-dimension="140" data-text="35%"
+							data-width="25" data-fontsize="25" 
 							data-percent="35" 
 							data-fgcolor="#61a9dc" 
 							data-bgcolor="#eee" 
@@ -702,6 +702,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 	    });
 $(function () {
     $(document).ready(function () {
+	dashboard.getSD();
         Highcharts.setOptions({
             global: {
                 useUTC: false
@@ -843,16 +844,18 @@ $(function () {
                 type: 'area',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 0,
+		alignTicks: false,
                 events: {
                     load: function () {
 
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                y = Math.random();
-                            series.addPoint([x, y], true, true);
-                        }, 1000);
+			    var z = dashboard.temperature();
+                            var x = (new Date()).getTime() // current time
+                            var y = Number($("#temperature").text());    
+                            series.addPoint([x,y], true, true);
+                        }, 3000);
                     }
                 }
             },
@@ -864,14 +867,19 @@ $(function () {
                 tickPixelInterval: 150
             },
             yAxis: {
+		floor: 0,
+		ceiling:88,
+		min:22,
+		allowDecimals:false,
                 title: {
                     text: ' '
-                },
+                }
+/*
                 plotLines: [{
                     value: 0,
-                    width: 1.5,
+                    width: 1,
                     color: '#808080'
-                }]
+                }]*/
             },
             tooltip: {
                 formatter: function () {
@@ -892,18 +900,17 @@ $(function () {
                     var data = [],
                         time = (new Date()).getTime(),
                         i;
-
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()
+                            y: Math.random()*10+33
                         });
                     }
                     return data;
                 }())
             }]
         });
-     $('#mysd').circliful();
+     //$('#mysd').circliful();
     });
 });		
 

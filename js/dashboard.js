@@ -253,6 +253,32 @@ dashboard.getLastLog = function () {
     $("select[name='lastlog_dashboard_length']").val("5");
 };
 
+dashboard.temperature = function () {
+    moduleData("temperature", function (data) {
+	$("#temperature").text(data);
+    });
+};
+dashboard.getV = function () {
+    moduleData("VV", function (data) {
+    });
+};
+dashboard.getI = function () {
+    moduleData("II", function (data) {
+    });
+};
+dashboard.getSD = function () {
+    moduleData("SD", function (data) {
+	if(data)
+	{
+	    $('#mysd').html("");
+	    $("#sd-total").text(data['total']);
+	    $("#sd-free").text(data['free']);
+	    $("#mysd").attr('data-percent',data['percent']);
+	    $("#mysd").attr('data-text',data['percent']+"%");
+	    $('#mysd').circliful();
+	}
+    });
+};
 dashboard.getRam = function () {
     moduleData("mem", function (data) {
         var ram_total = data[1];
@@ -620,6 +646,10 @@ dashboard.fnMap = {
     ram: dashboard.getRam,
     memcached: dashboard.getMemcached,
     cpua: dashboard.getCpu,
+    temperature:dashboard.temperature,
+    V:dashboard.getV,
+    I:dashboard.getI,
+    SD:dashboard.getSD,
 //    ps: dashboard.getPs,
 //    df: dashboard.getDf,
     os: dashboard.getOs,
