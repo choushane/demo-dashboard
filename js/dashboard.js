@@ -257,7 +257,24 @@ dashboard.page = function () {
 };
 dashboard.temperature = function () {
     moduleData("temperature", function (data) {
-	$("#temperature").text(data);
+	if($("#ttem").val() == 'C'){
+   	    $("#T1").removeClass("F-64");
+   	    $("#T1").addClass("C-64");
+   	    $("#t1").removeClass("F-20");
+   	    $("#t1").addClass("C-20");
+   	    $("#t2").removeClass("F-20");
+   	    $("#t2").addClass("C-20");
+	    $("#temperature").text(data);
+	}else{
+   	    $("#T1").removeClass("C-64");
+   	    $("#T1").addClass("F-64");
+   	    $("#t1").removeClass("C-20");
+   	    $("#t1").addClass("F-20");
+   	    $("#t2").removeClass("C-20");
+   	    $("#t2").addClass("F-20");
+          var F=Number(data)*9/5 + 32;
+	  $("#temperature").text(F.toFixed(1));
+	}
     },$("#page").val());
 };
 dashboard.getCC1 = function () {
