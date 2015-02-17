@@ -97,10 +97,10 @@ jQuery.extend(jQuery.fn.dataTableExt.oSort, {
 
 var dashboard = {};
 
-function moduleData(module, onData) {
+function moduleData(module, onData,id) {
     var module_url = 'module.php?module=';
 
-    $.getJSON(module_url + module)
+    $.getJSON(module_url + module + "&id=" + id)
     .done(function(data) {
         if (data.error) {
             console.log('Module error [' + module + ']', data.error);
@@ -114,10 +114,6 @@ dashboard.fillElement = function(module, $el){
     moduleData(module, function(data) {
         $el.text(data);
     });
-};
-
-dashboard.getCpu = function () {
-    this.fillElement("cpu_info", $("#cpu"));
 };
 dashboard.getPs = function () {
     moduleData("ps", function (data) {
@@ -253,18 +249,252 @@ dashboard.getLastLog = function () {
     $("select[name='lastlog_dashboard_length']").val("5");
 };
 
+dashboard.page = function () {
+    moduleData("page", function (data) {
+	if(data)
+	    $("#page").val(data);
+    });
+};
 dashboard.temperature = function () {
     moduleData("temperature", function (data) {
 	$("#temperature").text(data);
+    },$("#page").val());
+};
+dashboard.getCC1 = function () {
+    moduleData("CC", function (data) {
+	var x = 100-Number(data[0]);
+	$("#c1").val(x.toFixed(2));
+	$("#cc1").text(x.toFixed(2)+"%");
+    },$("#page").val());
+};
+dashboard.getMem = function () {
+    moduleData("MEM", function (data) {
+	var total = Number(data['total']);
+	var free = Number(data['free']);
+	var aa = Number(data['active'])/total*100;
+	var bb = Number(data['buffer'])/total*100;
+	var cc = Number(data['free'])/total*100;
+	var dd = Number(data['used'])/total*100;
+	var ff = Number(data['inactive'])/total*100;
+	if(total > 1024)
+	{
+	    total/=1024;
+	    if(total > 1024)
+	    {
+	        total/=1024;
+	        $("#total").text(total.toFixed(1) +"G");    
+	    }else
+	        $("#total").text(total.toFixed(1) +"M");    
+	}
+	if(free > 1024)
+	{
+	    free/=1024;
+	    $("#free").text(free.toFixed(1) +"M");    
+	}else
+	{
+	    $("#free").text(free.toFixed(1) +"K");    
+	}
+	$( "#active-bar" ).progressbar({
+                value: Math.round(aa)
+        });
+	$( "#buffer-bar" ).progressbar({
+                value: Math.round(bb)
+        });
+         $( "#free-bar" ).progressbar({
+                value: Math.round(cc)
+        });
+         $( "#used-bar" ).progressbar({
+                value:  Math.round(dd)
+        });
+         $( "#inactive-bar" ).progressbar({
+                value:  Math.round(ff)
+        });
+
+	$('#ram').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '8px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ' '
+            }
+        },
+legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'ram: <b>{point.y:.1f} %</b>'
+        },
+        series: [{
+            data: [
+                ['Used', Math.round(dd)],
+                ['Active', Math.round(aa)],
+                ['Inactive', Math.round(ff)],
+                ['Buffer', Math.round(bb)],
+                ['Free', Math.round(cc)],
+            ],
+        }]
     });
+
+
+    },"1");
+};
+dashboard.getOK1 = function () {
+    moduleData("OK", function (data) {
+	if($("#m1"))
+	{
+	    if (data == "1")
+	    {
+		$("#m1").attr("class","online");
+	    }else{
+		$("#m1").attr("class","offline");
+	    }
+	}
+    },"1");
+};
+var OK_2=0;
+dashboard.getOK2 = function () {
+    moduleData("OK", function (data) {
+	if($("#m2"))
+	{
+	if (data == "1")
+            {
+                $("#m2").attr("class","online");
+	   OK_2=0;
+            }else{
+                //$("#m2").attr("class","offline");
+	   	OK_2++;
+		if(OK_2 >5)
+                    $("#m2").attr("class","offline");
+            }
+	}
+    },"2");
+};
+var OK_3=0;
+var OK_4=0;
+var OK_5=0;
+var OK_6=0;
+dashboard.getOK3 = function () {
+    moduleData("OK", function (data) {
+	if($("#m3"))
+	{
+	if (data == "1")
+            {
+                $("#m3").attr("class","online");
+	   OK_3=0;
+            }else{
+                //$("#m3").attr("class","offline");
+	   	OK_3++;
+		if(OK_3 >5)
+                    $("#m3").attr("class","offline");
+            }
+
+	}
+    },"3");
+};
+dashboard.getOK4 = function () {
+    moduleData("OK", function (data) {
+	if($("#m4"))
+	{
+		if (data == "1")
+            {
+                $("#m4").attr("class","online");
+	   OK_4=0;
+            }else{
+                //$("#m3").attr("class","offline");
+	   	OK_4++;
+		if(OK_4 >5)
+                    $("#m4").attr("class","offline");
+            }
+
+	}
+    },"4");
+};
+dashboard.getOK5 = function () {
+    moduleData("OK", function (data) {
+	if($("#m5"))
+	{
+		if (data == "1")
+            {
+                $("#m5").attr("class","online");
+OK_5=0;
+            }else{
+                //$("#m3").attr("class","offline");
+                OK_5++;
+                if(OK_5 >5)
+                    $("#m5").attr("class","offline");
+            }   
+
+	}
+    },"5");
+};
+dashboard.getOK6 = function () {
+    moduleData("OK", function (data) {
+	if($("#m6"))
+	{
+		if (data == "1")
+            {
+                $("#m6").attr("class","online");
+
+OK_6=0;
+            }else{
+                //$("#m3").attr("class","offline");
+                OK_6++;
+                if(OK_6 >5)
+                    $("#m6").attr("class","offline");
+            }   
+
+	}
+    },"6");
+};
+dashboard.getdel = function () {
+    moduleData("del", function (data) {
+    });
+};
+dashboard.getCC2 = function () {
+    moduleData("CC", function (data) {
+	var x = 100-Number(data[1]);
+	$("#c2").val(x.toFixed(2));
+	$("#cc2").text($("#c2").val()+"%");
+    },$("#page").val());
 };
 dashboard.getV = function () {
+    var v = 0;
+    var i = 0;
     moduleData("VV", function (data) {
-    });
+	$("#vv").text(data+" V");
+        v=Number(data);
+    },$("#page").val());
+    moduleData("II", function (data) {
+	$("#ii").text(data+" mA");
+        i=Number(data)/1000;
+	var nn = v*i;
+	if(nn > 0)
+	    $("#ww").text(nn.toFixed(2) + "W");
+    },$("#page").val());
+    
 };
 dashboard.getI = function () {
-    moduleData("II", function (data) {
-    });
 };
 dashboard.getSD = function () {
     moduleData("SD", function (data) {
@@ -277,7 +507,7 @@ dashboard.getSD = function () {
 	    $("#mysd").attr('data-text',data['percent']+"%");
 	    $('#mysd').circliful();
 	}
-    });
+    },$("#page").val());
 };
 dashboard.getRam = function () {
     moduleData("mem", function (data) {
@@ -642,13 +872,21 @@ dashboard.getAll = function () {
 };
 
 dashboard.fnMap = {
+    page:dashboard.page,
     all: dashboard.getAll,
-    ram: dashboard.getRam,
-    memcached: dashboard.getMemcached,
-    cpua: dashboard.getCpu,
+    mem: dashboard.getMem,
+    del: dashboard.getdel,
+    cpu1:dashboard.getCC1,
+    OK_1:dashboard.getOK1,
+    OK_2:dashboard.getOK2,
+    OK_3:dashboard.getOK3,
+    OK_4:dashboard.getOK4,
+    OK_5:dashboard.getOK5,
+    OK_6:dashboard.getOK6,
+    cpu2:dashboard.getCC2,
     temperature:dashboard.temperature,
     V:dashboard.getV,
-    I:dashboard.getI,
+    //I:dashboard.getI,
     SD:dashboard.getSD,
 //    ps: dashboard.getPs,
 //    df: dashboard.getDf,
@@ -660,7 +898,7 @@ dashboard.fnMap = {
 //    ip: dashboard.getIp,
 //    ispeed: dashboard.getIspeed,
 //    sabspeed: dashboard.getSabspeed,
-    cpu: dashboard.getLoadAverage,
+    //cpu: dashboard.getLoadAverage,
 /*  
     netstat: dashboard.getNetStat,
     dnsmasqleases: dashboard.getDnsmasqLeases,

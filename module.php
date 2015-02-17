@@ -9,6 +9,9 @@
         'dhcpleases',
         'hostname',
         'ip',
+        'del',
+        'OK',
+	'page',
         'issue',
         'recent_account_logins',
         'loadavg',
@@ -26,6 +29,7 @@
         'swap',
         'time',
         'uptime',
+	'cpu',
         'users',
         'common_applications',
 		'arp_cache_table',
@@ -34,7 +38,9 @@
         'cpu_info',
 	'temperature',
 	'VV',
+	'MEM',
 	'II',
+	'CC',
 	'SD',
 		'io_stats',
     );
@@ -59,12 +65,14 @@
         $requested_module = isset($argv[1]) ? $argv[1] : false;
     } else {
         $requested_module = isset($_GET['module']) ? $_GET['module'] : false;
+        $id = isset($_GET['id']) ? $_GET['id'] : false;
     }
 
 
     // The default JSON object to return
     $return = array(
         'module' => $requested_module,
+        'id' => $id,
         'data'   => false,
         'error'  => false,
     );

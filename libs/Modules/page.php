@@ -2,15 +2,14 @@
 
     namespace Modules;
 
-    class II extends \ld\Modules\Module {
-        protected $name = 'II';
+    class page extends \ld\Modules\Module {
+        protected $name = 'page';
         protected $raw_output = true;
 
         public function getData($args=array()) {
 			$data = array();
-			
 			exec(
-                "/bin/cat /home/linaro/".$args['id']."/ii.log",
+                "/bin/cat /deamon/page",
                 $result
             );
 	    //return shell_exec('/bin/cat /home/linaro/003/oo.log');

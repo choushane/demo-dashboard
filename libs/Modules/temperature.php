@@ -10,7 +10,7 @@
 			$data = array();
 			
 			exec(
-                "/bin/cat /home/linaro/003/oo.log",
+                "/bin/cat /home/linaro/".$args['id']."/oo.log",
                 $result
             );
 	    //return shell_exec('/bin/cat /home/linaro/003/oo.log');

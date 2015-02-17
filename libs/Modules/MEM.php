@@ -2,30 +2,27 @@
 
     namespace Modules;
 
-    class II extends \ld\Modules\Module {
-        protected $name = 'II';
+    class MEM extends \ld\Modules\Module {
+        protected $name = 'MEM';
         protected $raw_output = true;
 
         public function getData($args=array()) {
 			$data = array();
 			
 			exec(
-                "/bin/cat /home/linaro/".$args['id']."/ii.log",
+                "/usr/bin/vmstat -s |awk '{print $1\":\"$3}'",
                 $result
             );
-	    //return shell_exec('/bin/cat /home/linaro/003/oo.log');
-	    return $result;
 
             $result = array_filter($result);
 
 		foreach ($result as $a) {
 		$p = explode(':', $a);
 
-                //$data[$p[0]] = $p[1];
-		return $p[1];
+                $data[$p[1]] = $p[0];
+		if($p[1] == "buffer")
 		break;
             }
-			
-			return $data;
+	    return $data;
         }
     }

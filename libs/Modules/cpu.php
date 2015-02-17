@@ -2,28 +2,26 @@
 
     namespace Modules;
 
-    class II extends \ld\Modules\Module {
-        protected $name = 'II';
+    class cpu extends \ld\Modules\Module {
+        protected $name = 'cpu';
         protected $raw_output = true;
 
         public function getData($args=array()) {
 			$data = array();
 			
 			exec(
-                "/bin/cat /home/linaro/".$args['id']."/ii.log",
+                "/usr/bin/sar -P ALL 0 |sed -n '5,6p'"
                 $result
             );
+return $result;
 	    //return shell_exec('/bin/cat /home/linaro/003/oo.log');
-	    return $result;
 
             $result = array_filter($result);
 
 		foreach ($result as $a) {
-		$p = explode(':', $a);
+		$p = explode(' ', $a);
 
-                //$data[$p[0]] = $p[1];
-		return $p[1];
-		break;
+                $data[$p[1]] = $p[7];
             }
 			
 			return $data;

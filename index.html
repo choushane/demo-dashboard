@@ -76,8 +76,10 @@
                          height:80%;}
             .multiple_part{margin:0px;margin-top:110px;width:100%;
                            height:70%;}
-            .map{margin:10px;background-color:#888888;height:500px;} 
-            .machine{float:left;margin:10px;background-color:#FFFFFF;width:32%;height:300px;opacity:0.8} 
+            .map{margin:10px;background-image:url('./img/map.png');height:518px;} 
+            .machine{float:left;margin:10px;background-color:#FFFFFF;width:470px;height:220px;opacity:0.8} 
+            .online{float:left;margin:10px;background-color:#FFFFFF;width:470px;height:220px;opacity:0.8} 
+            .offline{float:left;margin:10px;background-color:#CC0000;width:470px;height:220px;opacity:0.8} 
 	    .text_list{margin-top:10px;}
 	    .text_page{display:none;}
 	    .widget-all{width:85%;}
@@ -139,12 +141,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				<div class="list_2">
 				    <div class="arrow" ></div>
 				    <div class="Aside-left title">CPU:</div>
-				    <div class="text Aside-left" id="cpu"></div>
+				    <div class="text Aside-left" id="cpu">ARMv7</div>
 				</div>
 				<div class="list_2">
 				    <div class="arrow" ></div>
 				    <div class="Aside-left">RAM:</div>
-				    <div class="text Aside-left" id=""></div>
+				    <div class="text Aside-left" id="">748.2M</div>
 				</div>
 			    </div>
                             <div class="bar">
@@ -156,7 +158,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="arrow" ></div>
 				    <div class="Aside-left">OS:</div>
 				</div>
-				<div class="list_2 text contect_os" id="os-info"></div>
+				<div class="list_2 text contect" id="os-info1">Ubuntu</div>
 				<div class="list_2">
 				    <div class="arrow" ></div>
 				    <div class="Aside-left">System Time:</div>
@@ -171,8 +173,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="arrow" ></div>
 				    <div class="Aside-left">Hostname:</div>
 				</div>
-				<div class="list_2 text contect" id="os-hostname"></div>
+				<div class="list_2 text contect" id="os-hostname1">Linaro</div>
 			    </div>
+<!--
                             <div class="bar">
                                 <div class="sensor"></div>
                                 <div class="text_btn Aside-left">Sensor</div>
@@ -191,6 +194,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="Aside-left">Temperature:</div>
 				</div>
 			    </div>
+-->
                         </div>
                     </div>
                 </div>
@@ -214,176 +218,264 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
                 </div>
 		<div class="right_bottom">
 
-		<div id="multiple_part" style="display:none;">
+		<div id="multiple_part" style="">
 		    <div class="map">
 		    </div>
 
-		    <div class="machine">
+		    <div id="m1" class="machine">
 			<div>
-			    <div class="device_s" style="margin:15px;width:40px;height:40px;"></div>
+			    <div class="device_s" style="margin:0px;width:40px;height:40px;"></div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="network" style="width:30px;height:30px;"></div>
 			    </div>
-			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
 				Network
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-			    </div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="temperature" style="width:30px;height:30px;"></div>
 			    </div>
 			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
 				Temperature
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-				</div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="system" style="width:30px;height:30px;"></div>
 			    </div>
 			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
 				System
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-red" style="width:150px;height:25px;"></div>-->
+			    <div class="Aside-left" style="margin-left:15px;width:50px;height:10px;">
 			    </div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="sensor_s" style="width:30px;height:30px;"></div>
 			    </div>
-			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
 				Sensor
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-			    </div>
-			</div>
-			<div style="margin-top:5px;">
-			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:80px;width:30px;height:30px;">EMBUX</div>
+			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:40px;height:30px;">ID-1</div>
 			    <div class="Aside-right head_s" style="width:30px;height:30px;"></div>
 			</div>
 		    </div>
 
-		    <div class="machine">
+		    <div id="m2" class="machine">
 			<div>
-			    <div class="device_s" style="margin:15px;width:40px;height:40px;"></div>
+			    <div class="device_s" style="margin:0px;width:40px;height:40px;"></div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="network" style="width:30px;height:30px;"></div>
 			    </div>
-			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
 				Network
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-			    </div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="temperature" style="width:30px;height:30px;"></div>
 			    </div>
 			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
 				Temperature
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-				</div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="system" style="width:30px;height:30px;"></div>
 			    </div>
 			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
 				System
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-red" style="width:150px;height:25px;"></div>-->
+			    <div class="Aside-left" style="margin-left:15px;width:50px;height:10px;">
 			    </div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="sensor_s" style="width:30px;height:30px;"></div>
 			    </div>
-			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
 				Sensor
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-			    </div>
-			</div>
-			<div style="margin-top:5px;">
-			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:80px;width:30px;height:30px;">EMBUX</div>
+			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:40px;height:30px;">ID-2</div>
 			    <div class="Aside-right head_s" style="width:30px;height:30px;"></div>
 			</div>
 		    </div>
 
-		    <div class="machine">
+		    <div id="m3" class="machine">
 			<div>
-			    <div class="device_s" style="margin:15px;width:40px;height:40px;"></div>
+			    <div class="device_s" style="margin:0px;width:40px;height:40px;"></div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="network" style="width:30px;height:30px;"></div>
 			    </div>
-			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
 				Network
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-			    </div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="temperature" style="width:30px;height:30px;"></div>
 			    </div>
 			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
 				Temperature
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-				</div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="system" style="width:30px;height:30px;"></div>
 			    </div>
 			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
 				System
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-red" style="width:150px;height:25px;"></div>-->
+			    <div class="Aside-left" style="margin-left:15px;width:50px;height:10px;">
 			    </div>
 			</div>
-			<div style="margin-top:5px;height:40px;width:100%;">
+			<div style="margin-top:1px;height:40px;width:100%;">
 			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
 				<div class="sensor_s" style="width:30px;height:30px;"></div>
 			    </div>
-			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
 				Sensor
 			    </div>
-			    <div class="Aside-left" style="margin-left:15px;width:200px;height:40px;">
-				<!--<div class="Aside-right status-blue" style="width:150px;height:25px;"></div>-->
-			    </div>
-			</div>
-			<div style="margin-top:5px;">
-			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:80px;width:30px;height:30px;">EMBUX</div>
+			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:40px;height:30px;">ID-3</div>
 			    <div class="Aside-right head_s" style="width:30px;height:30px;"></div>
 			</div>
 		    </div>
 
+		    <div id="m4" class="machine">
+			<div>
+			    <div class="device_s" style="margin:0px;width:40px;height:40px;"></div>
+			</div>
+			<div style="margin-top:1px;height:40px;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="network" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
+				Network
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="temperature" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+				Temperature
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="system" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+				System
+			    </div>
+			    <div class="Aside-left" style="margin-left:15px;width:50px;height:10px;">
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="sensor_s" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
+				Sensor
+			    </div>
+			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:40px;height:30px;">ID-4</div>
+			    <div class="Aside-right head_s" style="width:30px;height:30px;"></div>
+			</div>
+		    </div>
+
+		    <div id="m5" class="machine">
+			<div>
+			    <div class="device_s" style="margin:0px;width:40px;height:40px;"></div>
+			</div>
+			<div style="margin-top:1px;height:40px;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="network" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
+				Network
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="temperature" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+				Temperature
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="system" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+				System
+			    </div>
+			    <div class="Aside-left" style="margin-left:15px;width:50px;height:10px;">
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="sensor_s" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
+				Sensor
+			    </div>
+			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:40px;height:30px;">ID-5</div>
+			    <div class="Aside-right head_s" style="width:30px;height:30px;"></div>
+			</div>
+		    </div>
+		    <div id="m6" class="machine">
+			<div>
+			    <div class="device_s" style="margin:0px;width:40px;height:40px;"></div>
+			</div>
+			<div style="margin-top:1px;height:40px;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="network" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
+				Network
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="temperature" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+				Temperature
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="system" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;width:200px;height:40px;">
+				System
+			    </div>
+			    <div class="Aside-left" style="margin-left:15px;width:50px;height:10px;">
+			    </div>
+			</div>
+			<div style="margin-top:1px;height:40px;width:100%;">
+			    <div class="Aside-left" style="margin-left:15px;width:40px;height:40px;">
+				<div class="sensor_s" style="width:30px;height:30px;"></div>
+			    </div>
+			    <div class="Aside-left" style="font-size:24px;margin-left:15px;height:40px;">
+				Sensor
+			    </div>
+			    <div class="Aside-right" style="font-size:24px;line-height:25px;margin-right:40px;height:30px;">ID-6</div>
+			    <div class="Aside-right head_s" style="width:30px;height:30px;"></div>
+			</div>
+		    </div>
 		</div>
 
 
-		<div id="single_part">
+		<div id="single_part" style="display:none;">
 		    <div class="main-inner">
 			<div class="container">
 			    <div class="lead" style="text-align: center;">
@@ -392,7 +484,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="span3 search " style="width:300px;">
 					<div id="general-info-widget" class="widget widget-table action-table">
 				            <div class="widget-header">
-						<div class="zoom"></div>
+						<div id="A1" class="zoom"></div>
 					    </div>
 					    <div class="widget-content" style="height:250px;">
 						<div class="Aside-left widget-all">
@@ -435,7 +527,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 							    </div>-->
 							</div>
 						    </div>
-						    <div id="demo-bar" style="margin:0px;width:100%;height:100px;"></div> 
+						    <div id="demo-bar" style="margin:0px;width:250px;height:100px;"></div> 
 						</div>
 					    </div>
 					</div>
@@ -443,13 +535,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="span3 search " style="width:300px;">
     					<div id="general-info-widget" class="widget widget-table action-table">
 				            <div class="widget-header">
-						<div class="zoom"></div>
+						<div id="A2" class="zoom"></div>
 					    </div>
 					    <div class="widget-content" style="height:250px;">
 	    					<div class="Aside-left widget-all">
 						<div class="Aside-left sd_card"></div>
 						<div style="height:80px;"></div>
-						<div class="Aside-left" style="width:80px;height:80px;">
+						<div class="Aside-left" style="width:100px;height:80px;">
 						    <div id="sd-total" style="margin:0px;width:100%;height:40px;background-color:#02C874;font-size:30px;line-height:35px;">
 						    --G
 						    </div>
@@ -473,7 +565,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="span3 search " style="width:300px;">
 					<div id="general-info-widget" class="widget widget-table action-table">
 					    <div class="widget-header">
-						<div class="zoom"></div>
+						<div id="A3" class="zoom"></div>
 					    </div>
 					    <div class="widget-content" style="height:250px;">
 						<div class="Aside-left widget-all">
@@ -490,8 +582,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 								    <div class="Aside-left" style="margin:0px;font-size:24px;width:50px;height:20px;line-height:30px;">0.5</div>
 								</div>
 							    </div>
-							    <div class="Aside-left" style="width:80px;height:100%;font-size:36px;line-height:70px;">
-							    2.5
+							    <div id="ww" class="Aside-left" style="height:100%;font-size:36px;line-height:70px;">
+							    0.0
 							    </div>
 							</div>
 						    </div>
@@ -509,8 +601,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 								    <div class="Aside-left" style="margin:0px;font-size:24px;width:50px;height:20px;line-height:30px;">4.8</div>
 								</div>
 							    </div>
-							    <div class="Aside-left" style="width:80px;height:100%;font-size:36px;line-height:70px;">
-							    5.0
+							    <div id="vv" class="Aside-left" style="height:100%;font-size:36px;line-height:70px;">
+							    0.0
 							    </div>
 							</div>
 						    </div>
@@ -527,8 +619,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 								    <div class="Aside-left" style="margin:0px;font-size:24px;width:50px;height:20px;line-height:30px;">0.8</div>
 								</div>
 							    </div>
-							    <div class="Aside-left" style="width:80px;height:100%;font-size:36px;line-height:70px;">
-							    0.5
+							    <div id="ii" class="Aside-left" style="height:100%;font-size:32px;line-height:70px;">
+							    0.0
 							    </div>
 							</div>
 						    </div>
@@ -540,7 +632,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="span3 search " style="width:300px;">
 					<div id="general-info-widget" class="widget widget-table action-table">
 					    <div class="widget-header">
-						<div class="zoom"></div>
+						<div id="A4" class="zoom"></div>
 					    </div>
 					    <div class="widget-content" style="height:250px;">
 						<div class="Aside-left widget-all">
@@ -548,13 +640,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 							<div class="" style="height:80px;"></div>
 						    <div style="margin:0px;">
 						    	<p class="Aside-left" style="font-size:x-small;margin:0px;">CPU<br>1:</p>
-						    	<div id="cpu-bar-1" class="Aside-left" style="margin:0px;width:200px;height:80px;"></div>
-						    	<p class="Aside-left" style="font-size:x-small;margin:0px;height:80px;">50%</p>
+						    	<div id="cpu-bar-1" class="Aside-left" style="margin:0px;width:180px;height:80px;"></div>
+						    	<div class="Aside-left" id="cc1" style="font-size:12px;margin:0px;height:80px;">--%</div>
+<input id="c1" type="hidden" value=""/>
 						    </div>
 						    <div>
 						    	<p class="Aside-left" style="font-size:x-small;margin:0px;">CPU<br>2:</p>
-						    	<div id="cpu-bar-2" class="Aside-left" style="margin:0px;width:200px;height:80px;"></div>
-						    	<p class="Aside-left" style="font-size:x-small;margin:0px;height:80px;">50%</p>
+						    	<div id="cpu-bar-2" class="Aside-left" style="margin:0px;width:180px;height:80px;"></div>
+						    	<div class="Aside-left" id="cc2" style="font-size:12px;margin:0px;height:80px;">--%</div>
+<input id="c2" type="hidden" value=""/>
 						    </div>
 						</div>
 					    </div>
@@ -563,61 +657,66 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				    <div class="span3 search " style="width:610px;">
 					<div id="general-info-widget" class="widget widget-table action-table">
 					    <div class="widget-header">
-						<div class="zoom"></div>
+						<div id="A5" class="zoom"></div>
 					    </div>
 					    <div class="widget-content" style="height:510px;">
 						<div class="Aside-left widget-all">
 						    <div>
 							<div class="Aside-left ram"></div>
 							<div style="height:60px;">
-							    <div class="Aside-left"  style="color:#FFFFFF;background-color:#0000E3;width:80px;height:40px;font-size:24px;line-height:40px;">
-								556M
+							    <div id="free" class="Aside-left"  style="color:#FFFFFF;background-color:#0000E3;width:80px;height:40px;font-size:24px;line-height:40px;">
+								---
 							    </div>
-							    <div class="Aside-left" style="color:#FFFFFF;background-color:#888888;width:80px;height:40px;font-size:24px;line-height:40px;">
-								1.0G
+							    <div id="total" class="Aside-left" style="color:#FFFFFF;background-color:#888888;width:80px;height:40px;font-size:24px;line-height:40px;">
+								---
 							    </div>
 							</div>
 						    </div>
 						    <div style="height:200px;">
 							<div class="Aside-left" style="width:49%;height:100%;">
 							    <div style="margin-top:10px;">
+							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Used</p>
+<input type="hidden" id="used-text" value=""/>
+							    <div class="Aside-left" id="used-bar" style="width:150px;height:20px;"></div>
+							    </div>
+							    <div style="margin-top:10px;">
 							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Active</p>
+<input type="hidden" id="active-text" value=""/>
 							    <div class="Aside-left" id="active-bar" style="width:150px;height:20px;"></div>
 							    </div>
 							    <div style="margin-top:10px;">
-							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Buffers</p>
-							    <div class="Aside-left" id="buffers-bar" style="width:150px;height:20px;"></div>
+							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Inactive</p>
+<input type="hidden" id="inactive-text" value=""/>
+							    <div class="Aside-left" id="inactive-bar" style="width:150px;height:20px;"></div>
 							    </div>
-							    <div style="margin-top:10px;">
-							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Cached</p>
-							    <div class="Aside-left" id="cached-bar" style="width:150px;height:20px;"></div>
-							    </div>
-							    <div style="margin-top:10px;">
-							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Dirty</p>
-							    <div class="Aside-left" id="dirty-bar" style="width:150px;height:20px;"></div>
+							    <!--<div style="margin-top:10px;">
+							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Free</p>
+							    <div class="Aside-left" id="Free-bar" style="width:150px;height:20px;"></div>
 							    </div>
 							    <div style="margin-top:10px;">
 							    <p class="Aside-left" style="font-size:large;margin:0px;width:80px;height:24px;vertical-align:middle;">Inactive</p>
 							    <div class="Aside-left" id="inactive-bar" style="width:150px;height:20px;"></div>
-							    </div>
+							    </div>-->
 							</div>
 							<div class="Aside-left" style="width:50%;height:100%;">
 							    <div style="margin-top:10px;">
-							    <p class="Aside-left" style="font-size:large;margin:0px;width:100px;height:24px;vertical-align:middle;">KemelStack</p>
-							    <div class="Aside-left" id="keme-bar" style="width:150px;height:20px;"></div>
+							    <p class="Aside-left" style="font-size:large;margin:0px;width:100px;height:24px;vertical-align:middle;">Buffer</p>
+<input type="hidden" id="buffer-text" value=""/>
+							    <div class="Aside-left" id="buffer-bar" style="width:150px;height:20px;"></div>
 							    </div>
 							    <div style="margin-top:10px;">
-							    <p class="Aside-left" style="font-size:large;margin:0px;width:100px;height:24px;vertical-align:middle;">Mapped</p>
-							    <div class="Aside-left" id="map-bar" style="width:150px;height:20px;"></div>
+							    <p class="Aside-left" style="font-size:large;margin:0px;width:100px;height:24px;vertical-align:middle;">Free</p>
+<input type="hidden" id="free-text" value=""/>
+							    <div class="Aside-left" id="free-bar" style="width:150px;height:20px;"></div>
 							    </div>
-							    <div style="margin-top:10px;">
+							    <!--<div style="margin-top:10px;">
 							    <p class="Aside-left" style="font-size:large;margin:0px;width:100px;height:24px;vertical-align:middle;">MemFree</p>
 							    <div class="Aside-left" id="free-bar" style="width:150px;height:20px;"></div>
 							    </div>
 							    <div style="margin-top:10px;">
 							    <p class="Aside-left" style="font-size:large;margin:0px;width:100px;height:24px;vertical-align:middle;">MemTotal</p>
 							    <div class="Aside-left" id="total-bar" style="width:150px;height:20px;"></div>
-							    </div>
+							    </div>-->
 						    </div>
 						    </div>
 						    <div id="ram" style="height:240px;"></div>
@@ -634,12 +733,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 		</div>
             </div>
 
+	    <div id="A1_part" >
+		<div></div>	
+		<div></div>	
+		<div></div>	
+		<div></div>	
+	    </div>
+
 	    <div id="setting_part" >
 		<p>Setting Page</p>	
 	    </div>
 	    <div id="add_part" >
 		<p>Add Page</p>	
 	    </div>
+	    <input type="hidden" id="page" value="" />
         </div>
  	<script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
@@ -665,6 +772,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 	    $(".text_btn").click(function(){
 		$(".text_page").attr("style","displat:none");
 		$("#" + $(this).text()).attr("style","display:block");
+	    });
+	     $( "#A1_part" ).dialog({
+		autoOpen: false,
+		resizable: false,
+		height:500,
+		modal: true,
+		buttons: {
+			"OK": function() {
+			    $( this ).dialog( "close" );
+			},
+		Cancel: function() {
+			    $( this ).dialog( "close" );
+			}
+	        }
 	    });
 	     $( "#setting_part" ).dialog({
 		autoOpen: false,
@@ -697,11 +818,60 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 	    $(".set").click(function(){
 		$( "#setting_part" ).dialog("open");
 	    });
+/*
 	    $(".add").click(function(){
 		$( "#add_part" ).dialog("open");
 	    });
+*/
+function dect(){
+    
+	dashboard.getdel();
+	    dashboard.getOK1();
+	    dashboard.getOK2();
+	    dashboard.getOK3();
+	    dashboard.getOK4();
+	    dashboard.getOK5();
+	    dashboard.getOK6();
+        setTimeout(dect,3000);
+}
 $(function () {
     $(document).ready(function () {
+	$("#m1").click(function(){
+	    if ($("#m1").attr('class') == "online")
+	    {
+	        $("#page").val('1');$(".single").click()
+ 	    }
+	});
+	$("#m2").click(function(){
+	   if ($("#m2").attr('class') == "online")
+	    {
+	        $("#page").val('2');$(".single").click()
+	}
+	});
+	$("#m3").click(function(){
+	    if ($("#m3").attr('class') == "online")
+	{
+	        $("#page").val('3');$(".single").click()
+	}
+	});
+	$("#m4").click(function(){
+	    if ($("#m4").attr('class') == "online")
+	{
+	        $("#page").val('4');$(".single").click()
+}
+	});
+	$("#m5").click(function(){
+	    if ($("#m5").attr('class') == "online")
+	{
+	        $("#page").val('5');$(".single").click()
+}
+	});
+	$("#m6").click(function(){
+	    if ($("#m6").attr('class') == "online")
+	{
+	        $("#page").val('6');$(".single").click()
+	}
+	});
 	dashboard.getSD();
         Highcharts.setOptions({
             global: {
@@ -719,10 +889,11 @@ $(function () {
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () {
+			    dashboard.getCC2();
                             var x = (new Date()).getTime(), // current time
-                                y = Math.random();
+                                y = Number($("#c2").val())/100;
                             series.addPoint([x, y], true, true);
-                        }, 1000);
+                        }, 3000);
                     }
                 }
             },
@@ -746,7 +917,7 @@ $(function () {
             tooltip: {
                 formatter: function () {
                    return Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
+                        "CPU 2 : "+Highcharts.numberFormat(this.y*100, 2) + "%";
                 }
             },
             legend: {
@@ -784,10 +955,11 @@ $(function () {
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () {
+			    dashboard.getCC1();
                             var x = (new Date()).getTime(), // current time
-                                y = Math.random();
+                                y = Number($("#c1").val())/100;
                             series.addPoint([x, y], true, true);
-                        }, 1000);
+                        }, 3000);
                     }
                 }
             },
@@ -811,7 +983,7 @@ $(function () {
             tooltip: {
                 formatter: function () {
                    return Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
+                        "CPU 1 : "+Highcharts.numberFormat(this.y*100, 2) + "%";
                 }
             },
             legend: {
@@ -847,10 +1019,11 @@ $(function () {
 		alignTicks: false,
                 events: {
                     load: function () {
-
                         // set up the updating of the chart each second
                         var series = this.series[0];
                         setInterval(function () {
+			    dashboard.getMem();
+			    dashboard.getV();
 			    var z = dashboard.temperature();
                             var x = (new Date()).getTime() // current time
                             var y = Number($("#temperature").text());    
@@ -912,8 +1085,9 @@ $(function () {
         });
      //$('#mysd').circliful();
     });
+setTimeout(dect,3000);
 });		
-
+/*
 $('#ram').highcharts({
         chart: {
             type: 'column'
@@ -951,45 +1125,14 @@ $('#ram').highcharts({
         },
         series: [{
             data: [
-                ['Active', 23.7],
-                ['Buffers', 5.7],
-                ['Cached', 67.7],
-                ['Dirty', 10.2],
-                ['Inactive', 8.4],
-                ['KernelStack',24.5],
-                ['Mapped', 33.2],
-                ['MemFree', 57.3],
-                ['MemTotal', 95.2],
+                ['Used', 0.0],
+                ['Active', 0.0],
+                ['Inactive', 0.0],
+                ['Buffer', 0.0],
+                ['Free', 0.0],
             ],
         }]
-    });
-	 $( "#active-bar" ).progressbar({
-		value: 30
-	});
-	 $( "#buffers-bar" ).progressbar({
-		value: 60
-	});
-	 $( "#cached-bar" ).progressbar({
-		value: 39
-	});
-	 $( "#dirty-bar" ).progressbar({
-		value: 99
-	});
-	 $( "#inactive-bar" ).progressbar({
-		value: 10
-	});
-	 $( "#keme-bar" ).progressbar({
-		value: 77
-	});
-	 $( "#map-bar" ).progressbar({
-		value: 25
-	});
-	 $( "#free-bar" ).progressbar({
-		value: 85
-	});
-	 $( "#total-bar" ).progressbar({
-		value: 10
-	});
+    });*/
 	</script>
     </body>
 </html>

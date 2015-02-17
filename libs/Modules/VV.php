@@ -8,9 +8,8 @@
 
         public function getData($args=array()) {
 			$data = array();
-			
 			exec(
-                "/bin/cat /home/linaro/003/vv.log",
+                "/bin/cat /home/linaro/".$args['id']."/vv.log",
                 $result
             );
 	    //return shell_exec('/bin/cat /home/linaro/003/oo.log');
