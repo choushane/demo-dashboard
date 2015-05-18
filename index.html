@@ -52,7 +52,9 @@
             .service_bar{margin:5px;width:240px;height:100%;}
             .device_name{color:#FFFFFF;height:50px;font-size:20px;line-height:40px;width:190px;}
             .search{margin:5px;} 
+            .single_1{background-image:url('./img/single.png');float:left;margin:0px;width:50px;height:50px;}
             .single{background-image:url('./img/single.png');float:left;margin:0px;width:50px;height:50px;}
+            .multiple_1{background-image:url('./img/many.png');float:left;margin:0px;width:50px;height:50px;}
             .multiple{background-image:url('./img/many.png');float:left;margin:0px;width:50px;height:50px;}
 	    .text_btn{color:#FFFFFF;width:190px;height:40px;font-size:18px;line-height:40px;}
             .hardware{background-image:url('./img/hardware.png');float:left;margin:0px;width:40px;height:40px;}
@@ -117,8 +119,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
         <div class="all" >
             <div class="Aside-left left_all">
                 <div class="Aside-left left_left">
-                    <div class="single"></div>
-                    <div class="multiple"></div>
+                    <div id="cli" class="single"></div>
+                    <div id="ser" class="multiple"></div>
                 </div>
                 <div class="Aside-left left_right">
                     <div class="list_bar">
@@ -203,22 +205,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
                     <div class="Aside-left setting_bar">
                         <div class="Aside-left">
                             <div class="set"></div>
-                            <div class="add"></div>
+                            <!--<div class="add"></div>-->
                         </div>
-                        <div class="Aside-left">
-                            <input type="search" class="search"/>
-                        </div>
+			<!--
                         <div class="Aside-left">
                             <div class="table_a"></div>
                             <div class="table_b"></div>
                         </div>
+			-->
                     </div>
                 </div>
 		<div class="right_bottom">
 
 		<div id="multiple_part" style="">
-		    <div class="map">
-		    </div>
 
 		    <div id="m1" class="machine">
 			<div>
@@ -748,8 +747,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 			<option value="5" >5</option>
 			<option value="10" >10</option>
 			</select>
+                <p>Mode</p>
+			<select id="tmode" style="width:100px;">
+			<option value="client" >Client</option>
+			<option value="server" >Server</option>
+			</select>
 		<input type="hidden" id="utime" value="3"/>
 		<input type="hidden" id="ttem" value="C"/>
+		<input type="hidden" id="smode" value="client"/>
 	    </div>
 	    <div id="add_part" >
 		<p>Add Page</p>	
@@ -768,7 +773,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 	<script src="js/jquery.circliful.js"></script>
 
  	<script type="text/javascript">
-	   $(".single").click(function(){
+	   /*$(".single").click(function(){
 		    $("#single_part").attr("style","");
 		    $("#multiple_part").attr("style","display:none");
 	    });
@@ -776,7 +781,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 	   $(".multiple").click(function(){
 		$("#single_part").attr("style","display:none");
 		$("#multiple_part").attr("style","");
-	    });
+	    });*/
 	    $(".text_btn").click(function(){
 		$(".text_page").attr("style","displat:none");
 		$("#" + $(this).text()).attr("style","display:block");
@@ -815,7 +820,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7c00', end
 				localStorage.setItem("temp", "C");
 				$("#ttem").val("C");
 			    }
+			    localStorage.setItem("smode", $("#tmode").val());
 			    $( this ).dialog( "close" );
+			    $("#smode").val((localStorage.getItem("smode"))?localStorage.getItem("smode"):"client");
+			    if($("#smode").val() == "client"){
+				    $("#single_part").attr("style","");
+				    $("#cli").removeClass("single");
+				    $("#cli").addClass("single_1");
+				    $("#ser").removeClass("multiple_1");
+				    $("#ser").addClass("multiple");
+				    $("#multiple_part").attr("style","display:none");
+			    }
+			    if($("#smode").val() == "server"){
+				    $("#multiple_part").attr("style","");
+				    $("#cli").removeClass("single_1");
+				    $("#cli").addClass("single");
+				    $("#ser").removeClass("multiple");
+				    $("#ser").addClass("multiple_1");
+				    $("#single_part").attr("style","display:none");
+			    }
 			},
 		Cancel: function() {
 			    $( this ).dialog( "close" );
@@ -857,6 +880,24 @@ function dect(){
 }
 $(function () {
     $(document).ready(function () {
+	
+	$("#smode").val((localStorage.getItem("smode"))?localStorage.getItem("smode"):"client");
+	if($("#smode").val() == "client"){
+		    $("#single_part").attr("style","");
+				    $("#cli").removeClass("single");
+				    $("#cli").addClass("single_1");
+				    $("#ser").removeClass("multiple_1");
+				    $("#ser").addClass("multiple");
+		    $("#multiple_part").attr("style","display:none");
+	}
+	if($("#smode").val() == "server"){
+		    $("#multiple_part").attr("style","");
+				    $("#cli").removeClass("single_1");
+				    $("#cli").addClass("single");
+				    $("#ser").removeClass("multiple");
+				    $("#ser").addClass("multiple_1");
+		    $("#single_part").attr("style","display:none");
+	}
 	$("#ptime").val((localStorage.getItem("uptime"))?localStorage.getItem("uptime"):3);
 	$("#ttem").val((localStorage.getItem("temp"))?localStorage.getItem("temp"):"F");
 	$("input[value='"+$("#ttem").val() +"']").attr('checked',true);
